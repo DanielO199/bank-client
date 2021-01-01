@@ -1,6 +1,10 @@
-import {createStore} from 'redux';
-import billReducer from 'reducers';
+import { combineReducers } from 'redux';
+import billReducer from 'reducers/billReducer';
+import transactionReducer from 'reducers/transactionReducer';
 
-const store = createStore(billReducer)
+const store = combineReducers({
+	bill: billReducer,
+	transaction: transactionReducer
+});
 
-export default store
+export default store;

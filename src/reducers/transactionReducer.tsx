@@ -3,7 +3,7 @@ import { CREATE_NEW_BILL_REQUEST } from 'common/constants/billConsts';
 import { BillActionTypes } from 'interfaces/IBill';
 import { initialState } from 'stores/billStore';
 
-const billReducer = (state = initialState, action: BillActionTypes) => {
+const transactionReducer = (state = initialState, action: BillActionTypes) => {
 	switch (action.type) {
 		case CREATE_NEW_BILL_REQUEST:
 			return {
@@ -16,4 +16,4 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 	}
 };
 
-export default billReducer;
+export default transactionReducer;
