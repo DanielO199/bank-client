@@ -12,7 +12,7 @@ const transactionReducer = (state = initialState, action: BillActionTypes) => {
 			};
 
 		default:
-			break;
+			return { ...state };
 	}
 };
 

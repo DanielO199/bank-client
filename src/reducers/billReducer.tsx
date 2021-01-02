@@ -12,7 +12,7 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 			};
 
 		default:
-			break;
+			return { ...state };
 	}
 };
 
