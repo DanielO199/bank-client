@@ -1,6 +1,6 @@
-import { CREATE_NEW_BILL_REQUEST } from 'common/constants/billConsts';
+import { CREATE_NEW_BILL_REQUEST } from 'types/billTypes';
 
-import { BillActionTypes } from 'interfaces/IBill';
+import { BillActionTypes } from 'types/billTypes';
 import { initialState } from 'stores/billStore';
 
 const transactionReducer = (state = initialState, action: BillActionTypes) => {

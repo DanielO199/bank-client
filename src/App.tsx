@@ -1,13 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { RouteComponentProps } from '@reach/router';
 
-import { routes } from 'core/globals/mainRoutes';
-import { Logger } from 'modules/log/components/logger';
+import { routes } from 'routes';
+// import { Logger } from 'modules/log/components/logger';
 
 const App = () => {
 	return (
 		<div className="full-height">
-			<Logger />
+			{/* <Logger /> */}
 			{routes.map((route: Route, index) => {
 				return (
 					<Route
