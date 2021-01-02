@@ -16,10 +16,12 @@ export const createNewBillAction = (bill: IBillStore) => {
 };
 
 export const fetchBillsAction = () => async (dispatch) => {
+	console.log('1');
 	try {
 		const responseData = await authApi.getB();
+		console.log(responseData);
 		dispatch({ type: GET_BILLS_REQUEST, payload: responseData });
 	} catch (error) {
-		dispatch({ type: GET_BILLS_ERROR });
+		// dispatch({ type: GET_BILLS_ERROR });
 	}
 };
