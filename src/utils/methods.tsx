@@ -1,4 +1,4 @@
-import { IPagination } from 'core/interfaces/Pagination';
+import { IPagination } from 'common/interfaces';
 import { createBrowserHistory } from 'history';
 import querystring from 'query-string';
 

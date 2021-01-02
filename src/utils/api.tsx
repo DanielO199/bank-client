@@ -1,4 +1,4 @@
-import { request } from 'core/utils/request';
+import { request } from 'api/request';
 
 export const api = {
 	get: function (url, query?, cancelToken?) {

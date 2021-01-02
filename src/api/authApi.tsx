@@ -1,6 +1,9 @@
-import { api } from 'core/utils/api';
+import { api } from 'utils/api';
 
 export const authApi = {
+	getB: function (params?) {
+		return api.get(`/auth/login`, params);
+	},
 	login: function (data) {
 		return api.post(`/auth/login`, data);
 	},

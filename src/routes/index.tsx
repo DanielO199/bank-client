@@ -1,16 +1,4 @@
-import Loadable from 'react-loadable';
+import { homeRoutes } from './homeRoutes';
+import { authRoutes } from './authRoutes';
 
-import { ProtectedRoute, RerouteLogged, Spinner } from 'common/components';
-
-const LoginPage = Loadable({
-	loader: () => import('views/Login'),
-	loading: Spinner
-});
-
-export const routes = [
-	{
-		path: '/admin/login',
-		name: 'Admin Login',
-		component: RerouteLogged(LoginPage)
-	}
-];
+export const mainRoutes = [...homeRoutes, ...authRoutes];

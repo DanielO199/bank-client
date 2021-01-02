@@ -1,4 +1,4 @@
-import { CREATE_NEW_BILL_REQUEST } from 'types/billTypes';
+import { CREATE_NEW_BILL_REQUEST, GET_BILLS_REQUEST } from 'types/billTypes';
 
 import { BillActionTypes } from 'types/billTypes';
 import { initialState } from 'stores/billStore';
@@ -9,6 +9,11 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 			return {
 				...state,
 				bill: action.bill
+			};
+
+		case GET_BILLS_REQUEST:
+			return {
+				bills: action.payload
 			};
 
 		default:

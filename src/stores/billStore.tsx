@@ -1,4 +1,4 @@
-import { IBillStore } from 'interfaces';
+import { IBillStore } from 'types/billTypes';
 
 export const initialState: IBillStore = {
 	imBusy: false,

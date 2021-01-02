@@ -12,7 +12,7 @@ interface IButtonStyle {
 
 interface IButton {
 	children: any;
-	onClick?: Function;
+	onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 	disabled?: boolean;
 	title?: string;
 	role?: string;
@@ -38,10 +38,3 @@ export const Button = ({
 		</StyledButton>
 	);
 };
-
-export const TableActionButton = styled(StyledButton)`
-	padding: ${({ padding }) => padding};
-	min-width: 168px;
-	min-height: 35px;
-	margin: ${({ margin }) => margin};
-`;

@@ -1,13 +1,11 @@
-import React from 'react';
-import { observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom';
 
-import { authStore } from 'core/stores';
+import { authStore } from 'stores/authStore';
 
 export default function RerouteLogged(Children) {
-	return observer((props) => (
+	return (props) => (
 		<div className="authComponent full-height">
-			{authStore.accessToken && authStore.isUserAdmin ? (
+			{authStore.accessToken ? (
 				<Redirect
 					to={{
 						pathname: '/admin/reports',
@@ -18,5 +16,5 @@ export default function RerouteLogged(Children) {
 				<Children {...props} />
 			)}
 		</div>
-	));
+	);
 }

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import querystring from 'query-string';
-import i18n from 'i18next';
+// import i18n from 'i18next';
 
-import { config } from 'core/globals/config';
-import { localStorageGetItem } from 'core/utils/storage';
-import { authStore, loggerStore } from 'core/stores';
+import { config } from 'common/globals';
+// import { localStorageGetItem } from 'core/utils/storage';
+import { authStore } from 'stores/authStore';
 const { apiUrl } = config;
 
 export const REQUEST_CANCEL_MESSAGE = 'Operation canceled due to new request.';
@@ -46,7 +46,7 @@ export const request = (_url, _config: any = {}) => {
 	}
 
 	req.headers['Authorization'] = `Bearer ${authStore.accessToken}`;
-	req.headers['X-Lang'] = localStorageGetItem('language');
+	// req.headers['X-Lang'] = localStorageGetItem('language');
 
 	if (_config.multipart) {
 		req.headers['content-type'] = 'multipart/form-data';
@@ -67,7 +67,7 @@ export const request = (_url, _config: any = {}) => {
 		.request(req)
 		.then((data) => {
 			if (isActionMethod) {
-				loggerStore.successLog(data.data.message || i18n.t('core.success'));
+				// loggerStore.successLog(data.data.message || 'core.success');
 			}
 
 			return logger(data, _url);
@@ -79,9 +79,9 @@ export const request = (_url, _config: any = {}) => {
 			if (error.response) {
 				console.log(error.response, isActionMethod);
 				if (isActionMethod) {
-					loggerStore.errorLog(
-						error.response.data.message || i18n.t('core.error')
-					);
+					// loggerStore.errorLog(
+					// 	// error.response.data.message || i18n.t('core.error')
+					// );
 				}
 			} else if (error.request) {
 				console.log(error.request);

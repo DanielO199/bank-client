@@ -2,11 +2,7 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
 	display: block;
-	background-color: ${({ disabled }) =>
-		disabled ? primaryColorDisabled : primaryColor};
-	border: solid ${primaryLightColor} 3px;
-	border-radius: 9px;
-	color: ${whiteColor};
+
 	text-align: center;
 	font-size: 1rem;
 	min-height: 60px;
@@ -19,3 +15,8 @@ export const StyledButton = styled.button`
 		outline: none;
 	}
 `;
+/* background-color: ${({ disabled }) =>
+		disabled ? primaryColorDisabled : primaryColor};
+	border: solid ${primaryLightColor} 3px;
+	border-radius: 9px;
+	color: ${whiteColor}; */
