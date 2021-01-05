@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import { StyledButton } from './styles';
 
 interface IButtonStyle {

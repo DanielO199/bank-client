@@ -1,3 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledLayout = styled.div``;
+import { Layout } from 'antd';
+
+export const StyledLayout = styled(Layout)`
+	//paddings margins
+`;
