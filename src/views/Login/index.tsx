@@ -1,13 +1,5 @@
-//TUTAJ OWIJAM W LAYOUT I EXPORTUJE LOGINPAGECONTAINER I SIEMANO
+import { LoginContainer } from 'containers/Login';
 
-import LoginForm from 'containers/Login/LoginForm';
-
-const LoginPage = () => {
-	return (
-		<div>
-			<LoginForm />
-		</div>
-	);
-};
+const LoginPage = () => <LoginContainer />;
 
 export default LoginPage;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import querystring from 'query-string';
 // import i18n from 'i18next';
 
-import { config } from 'common/globals';
+import { config } from 'common/globals/config';
 // import { localStorageGetItem } from 'core/utils/storage';
 import { authStore } from 'stores/authStore';
 const { apiUrl } = config;
