@@ -70,5 +70,5 @@
 // 	text-align: center;
 // `;
 export const Spinner = () => {
-	return <div>x</div>;
+	return <div>LOADING</div>;
 };

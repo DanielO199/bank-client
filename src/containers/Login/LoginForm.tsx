@@ -5,13 +5,18 @@ import { RootState } from 'stores';
 
 const LoginForm = () => {
 	// const user = useSelector(({ bill }: RootState) => bill.bills);
-	const user = useSelector((state: RootState) => state.bill.bills);
-	const dispatch = useDispatch();
+	// const user = useSelector((state: RootState) => state.bill.bills);
+	// const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(fetchBillsAction());
-	}, []);
-	return <div>{JSON.stringify(user)}</div>;
+	// useEffect(() => {
+	// 	dispatch(fetchBillsAction());
+	// }, []);
+	return (
+		<div>
+			{/* {JSON.stringify(user)} */}
+			WTF
+		</div>
+	);
 };
 
 export default LoginForm;

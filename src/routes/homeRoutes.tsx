@@ -11,6 +11,6 @@ export const homeRoutes = [
 	{
 		path: '/login',
 		name: 'Login Page',
-		component: RerouteLogged(LoginPage)
+		component: LoginPage
 	}
 ];

@@ -5,7 +5,7 @@ import { mainRoutes } from 'routes';
 
 const App = () => {
 	return (
-		<div className="full-height">
+		<div>
 			{/* <Logger /> */}
 			{mainRoutes.map((route: RouteProps, index) => {
 				return (

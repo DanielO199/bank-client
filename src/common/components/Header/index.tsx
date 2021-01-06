@@ -5,7 +5,7 @@ import { StyledHeader } from './styles';
 
 export const Header = ({ isCollapsedSidebar, toggle }) => {
 	return (
-		<StyledHeader style={{ padding: 0 }}>
+		<StyledHeader style={{ paddingLeft: 20 }}>
 			{React.createElement(
 				isCollapsedSidebar ? MenuUnfoldOutlined : MenuFoldOutlined,
 				{
