@@ -1,27 +1,17 @@
 import {
-	CREATE_NEW_BILL_REQUEST,
-	GET_BILLS_REQUEST,
-	GET_BILLS_ERROR
-} from 'types/billTypes';
-import { IBillStore } from 'types/billTypes';
-import { BillActionTypes } from 'types/billTypes';
+	GET_FUNDS_REQUEST,
+	GET_FUNDS_SUCCESS,
+	GET_FUNDS_ERROR
+} from 'types/fundTypes';
 
-import { authApi } from 'api/authApi';
-const INIT_LOADING_DATA = 'INIT_LOADING_DATA';
-export const createNewBillAction = (bill: IBillStore) => {
-	return {
-		type: CREATE_NEW_BILL_REQUEST,
-		bill
-	};
-};
+import { fundApi } from 'api';
 
 export const fetchAvailableFundsAction = () => async (dispatch) => {
 	try {
-		dispatch({ type: INIT_LOADING_DATA });
-		const responseData = await authApi.getB();
-		console.log(responseData);
-		dispatch({ type: GET_BILLS_REQUEST, payload: responseData });
+		dispatch({ type: GET_FUNDS_REQUEST });
+		const responseData = await fundApi.get();
+		dispatch({ type: GET_FUNDS_SUCCESS, payload: responseData.funds });
 	} catch (error) {
-		dispatch({ type: GET_BILLS_ERROR });
+		dispatch({ type: GET_FUNDS_ERROR });
 	}
 };

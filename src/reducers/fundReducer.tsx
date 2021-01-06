@@ -1,16 +1,32 @@
-import { BillActionTypes } from 'types/billTypes';
 import { initialState } from 'stores/billStore';
 
-const INIT_LOADING_DATA = 'INIT_LOADING_DATA';
+import {
+	GET_FUNDS_REQUEST,
+	GET_FUNDS_SUCCESS,
+	GET_FUNDS_ERROR
+} from 'types/fundTypes';
 
-const fundReducer = (state = initialState, action: BillActionTypes) => {
+const fundReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case INIT_LOADING_DATA:
+		case GET_FUNDS_REQUEST:
 			return {
 				imBusy: true,
 				imWithError: false,
 				errorMsg: '',
 				...state
+			};
+
+		case GET_FUNDS_SUCCESS:
+			return {
+				imBusy: false,
+				imWithError: false,
+				funds: action.payload
+			};
+		case GET_FUNDS_ERROR:
+			return {
+				imBusy: false,
+				imWithError: true,
+				errorMsg: 'Could not load total funds'
 			};
 
 		default:
