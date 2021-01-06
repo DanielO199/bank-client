@@ -1,14 +1,16 @@
-import { CREATE_NEW_BILL_REQUEST } from 'types/billTypes';
-
 import { BillActionTypes } from 'types/billTypes';
 import { initialState } from 'stores/billStore';
 
+const INIT_LOADING_DATA = 'INIT_LOADING_DATA';
+
 const fundReducer = (state = initialState, action: BillActionTypes) => {
 	switch (action.type) {
-		case CREATE_NEW_BILL_REQUEST:
+		case INIT_LOADING_DATA:
 			return {
-				...state,
-				bill: action.bill
+				imBusy: true,
+				imWithError: false,
+				errorMsg: '',
+				...state
 			};
 
 		default:
