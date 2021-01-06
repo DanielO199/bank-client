@@ -11,12 +11,7 @@ const LoginForm = () => {
 	// useEffect(() => {
 	// 	dispatch(fetchBillsAction());
 	// }, []);
-	return (
-		<div>
-			{/* {JSON.stringify(user)} */}
-			WTF
-		</div>
-	);
+	return <div></div>;
 };
 
 export default LoginForm;

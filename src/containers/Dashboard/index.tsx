@@ -1,4 +1,4 @@
-import { Bills } from './Bills';
+import { Bills } from './components';
 
 export const DashboardContainer = () => {
 	return (
