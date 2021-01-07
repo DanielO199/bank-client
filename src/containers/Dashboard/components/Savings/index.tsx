@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PieChart, Pie } from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 
 import { fetchSavingsAction } from 'actions/fundActions';
 import { Spinner } from 'common/components';
 import { RootState } from 'stores';
+import { Wrapper } from './styles';
 
 export const Savings = () => {
 	// const funds = useSelector((state: RootState) => state.fund.funds);
@@ -13,9 +14,11 @@ export const Savings = () => {
 	);
 	const dispatch = useDispatch();
 
+	const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
 	const data = [
 		{ name: 'outgoing', money: 24 },
-		{ name: 'incoming', money: 0 }
+		{ name: 'incoming', money: 2 }
 	];
 
 	useEffect(() => {
@@ -24,20 +27,29 @@ export const Savings = () => {
 	console.log(savingsData);
 	if (imBusy) return <Spinner />;
 	return (
-		<div>
-			{/* {savings} */} XD
-			<PieChart width={200} height={80}>
+		<Wrapper>
+			{/* {savings} */} <div>80%</div>
+			<PieChart margin={0} width={100} height={60}>
 				<Pie
 					dataKey="money"
 					// isAnimationActive={false}
-					data={data}
-					cx={200}
-					cy={80}
-					innerRadius={60}
-					outerRadius={80}
+					data={savingsData}
+					cx={60}
+					cy={30}
+					innerRadius={25}
+					outerRadius={30}
+					paddingAngle={0}
 					fill="#82ca9d"
-				/>
+					margin={{
+						top: 50,
+						right: 30,
+						left: 30
+					}}>
+					{savingsData.map((entry, index) => (
+						<Cell fill={COLORS[index % COLORS.length]} />
+					))}
+				</Pie>
 			</PieChart>
-		</div>
+		</Wrapper>
 	);
 };
