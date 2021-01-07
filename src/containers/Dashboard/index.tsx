@@ -2,7 +2,7 @@ import {
 	Bills,
 	AvailableFunds,
 	Savings,
-	RecentTransations
+	RecentTransactions
 } from './components';
 
 import { Wrapper, Row } from './styles';
@@ -16,7 +16,7 @@ export const DashboardContainer = () => {
 			</Row>
 			<Row>
 				<Bills />
-				<RecentTransations />
+				<RecentTransactions />
 			</Row>
 		</Wrapper>
 	);

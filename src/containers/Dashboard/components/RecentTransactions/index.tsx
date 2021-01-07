@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAvailableFundsAction } from 'actions/fundActions';
-import { Spinner } from 'common/components';
-// import { RootState } from 'stores';
+import { Card } from 'antd';
 
-export const RecentTransations = () => {
-	// const funds = useSelector((state: RootState) => state.fund.funds);
-	// const { funds, imBusy, imWithError } = useSelector(
-	// 	(state: RootState) => state.fund
-	// );
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(fetchAvailableFundsAction());
-	}, []);
-	// console.log(funds);
-	if (true) return <Spinner />;
-	// return <div>{funds}</div>;
+export const RecentTransactions = () => {
+	return (
+		<div style={{ width: '50%' }}>
+			<Card title="Recent transactions" style={{ width: '100%' }}>
+				<p>Card content</p>
+				<p>Card content</p>
+				<p>Card content</p>
+			</Card>
+		</div>
+	);
 };

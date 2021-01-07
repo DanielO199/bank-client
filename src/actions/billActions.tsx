@@ -1,12 +1,15 @@
 import {
 	CREATE_NEW_BILL_REQUEST,
-	GET_BILLS_REQUEST,
-	GET_BILLS_ERROR
+	GET_USER_BILLS_REQUEST,
+	GET_USER_BILLS_SUCCESS,
+	GET_USER_BILLS_ERROR,
+	GET_ALL_BILLS_REQUEST,
+	GET_ALL_BILLS_SUCCESS,
+	GET_ALL_BILLS_ERROR
 } from 'types/billTypes';
 import { IBillStore } from 'types/billTypes';
-import { BillActionTypes } from 'types/billTypes';
 
-import { authApi } from 'api/authApi';
+import { billApi } from 'api/billApi';
 
 export const createNewBillAction = (bill: IBillStore) => {
 	return {
@@ -15,13 +18,27 @@ export const createNewBillAction = (bill: IBillStore) => {
 	};
 };
 
-export const fetchBillsAction = () => async (dispatch) => {
+export const fetchUserBillsAction = () => async (dispatch) => {
 	console.log('1');
 	try {
-		const responseData = await authApi.getB();
-		console.log(responseData);
-		dispatch({ type: GET_BILLS_REQUEST, payload: responseData });
+		dispatch({ type: GET_USER_BILLS_REQUEST });
+		const responseData = await billApi.getUserBills();
+
+		dispatch({ type: GET_USER_BILLS_SUCCESS, payload: responseData.bills });
 	} catch (error) {
-		dispatch({ type: GET_BILLS_ERROR });
+		dispatch({ type: GET_USER_BILLS_ERROR });
+	}
+};
+
+export const fetchAllBillsAction = () => async (dispatch) => {
+	console.log('1');
+	try {
+		dispatch({ type: GET_ALL_BILLS_REQUEST });
+		const responseData = await billApi.getAllBills();
+		console.log(responseData);
+
+		dispatch({ type: GET_ALL_BILLS_SUCCESS, payload: responseData.bills });
+	} catch (error) {
+		dispatch({ type: GET_ALL_BILLS_ERROR });
 	}
 };

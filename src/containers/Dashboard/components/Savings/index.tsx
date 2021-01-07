@@ -28,7 +28,7 @@ export const Savings = () => {
 	if (imBusy) return <Spinner />;
 	return (
 		<Wrapper>
-			{/* {savings} */} <div>80%</div>
+			<div>80%</div>
 			<PieChart margin={0} width={100} height={60}>
 				<Pie
 					dataKey="money"

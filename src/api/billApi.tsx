@@ -1,0 +1,13 @@
+import { api } from 'utils/api';
+
+export const billApi = {
+	getUserBills: function (params?) {
+		return api.get(`/bills/5ff38276fd149e22c08c6f27`, params);
+	},
+	getAllBills: function (params?) {
+		return api.get(`/bills`, params);
+	},
+	create: function (data) {
+		return api.post(`/bills`, data);
+	}
+};

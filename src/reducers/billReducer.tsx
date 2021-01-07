@@ -1,7 +1,11 @@
 import {
 	CREATE_NEW_BILL_REQUEST,
-	GET_BILLS_REQUEST,
-	GET_BILLS_ERROR
+	GET_USER_BILLS_REQUEST,
+	GET_USER_BILLS_SUCCESS,
+	GET_USER_BILLS_ERROR,
+	GET_ALL_BILLS_REQUEST,
+	GET_ALL_BILLS_SUCCESS,
+	GET_ALL_BILLS_ERROR
 } from 'types/billTypes';
 
 import { BillActionTypes } from 'types/billTypes';
@@ -15,12 +19,20 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 				bill: action.bill
 			};
 
-		case GET_BILLS_REQUEST:
+		case GET_USER_BILLS_REQUEST:
 			return {
-				bills: action.payload
+				...state,
+				imBusy: true
 			};
 
-		case GET_BILLS_ERROR:
+		case GET_USER_BILLS_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				userBills: action.payload
+			};
+
+		case GET_USER_BILLS_ERROR:
 			return { ...state };
 
 		default:
