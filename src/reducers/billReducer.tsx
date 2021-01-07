@@ -1,5 +1,6 @@
 import {
 	CREATE_NEW_BILL_REQUEST,
+	CREATE_NEW_BILL_SUCCESS,
 	GET_USER_BILLS_REQUEST,
 	GET_USER_BILLS_SUCCESS,
 	GET_USER_BILLS_ERROR,
@@ -16,7 +17,14 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 		case CREATE_NEW_BILL_REQUEST:
 			return {
 				...state,
-				bill: action.bill
+				imBusy: true
+			};
+
+		case CREATE_NEW_BILL_SUCCESS:
+			return {
+				...state,
+				imBusy: false
+				// userBills: [...state.userBills, action.bill]
 			};
 
 		case GET_USER_BILLS_REQUEST:

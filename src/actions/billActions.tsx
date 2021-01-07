@@ -1,5 +1,6 @@
 import {
 	CREATE_NEW_BILL_REQUEST,
+	CREATE_NEW_BILL_SUCCESS,
 	GET_USER_BILLS_REQUEST,
 	GET_USER_BILLS_SUCCESS,
 	GET_USER_BILLS_ERROR,
@@ -11,11 +12,15 @@ import { IBillStore } from 'types/billTypes';
 
 import { billApi } from 'api/billApi';
 
-export const createNewBillAction = (bill: IBillStore) => {
-	return {
-		type: CREATE_NEW_BILL_REQUEST,
-		bill
-	};
+export const createNewBillAction = (bill: IBillStore) => async (dispatch) => {
+	try {
+		dispatch({ type: CREATE_NEW_BILL_REQUEST });
+		const responseData = await billApi.create(bill);
+
+		dispatch({ type: CREATE_NEW_BILL_SUCCESS, payload: responseData.bill });
+	} catch (error) {
+		dispatch({ type: GET_USER_BILLS_ERROR });
+	}
 };
 
 export const fetchUserBillsAction = () => async (dispatch) => {

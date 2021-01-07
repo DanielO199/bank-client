@@ -1,14 +1,23 @@
-import { CREATE_NEW_BILL_REQUEST } from 'types/billTypes';
+import {
+	CREATE_TRANSACTION_REQUEST,
+	CREATE_TRANSACTION_SUCCESS,
+	GET_TRANSACTIONS_REQUEST,
+	GET_TRANSACTIONS_SUCCESS,
+	GET_TRANSACTIONS_ERROR
+} from 'types/transactionTypes';
 
 import { BillActionTypes } from 'types/billTypes';
-import { initialState } from 'stores/billStore';
+import { transactionStore } from 'stores/transactionStore';
 
-const transactionReducer = (state = initialState, action: BillActionTypes) => {
+const transactionReducer = (
+	state = transactionStore,
+	action: BillActionTypes
+) => {
 	switch (action.type) {
-		case CREATE_NEW_BILL_REQUEST:
+		case CREATE_TRANSACTION_REQUEST:
 			return {
 				...state,
-				bill: action.bill
+				imBusy: true
 			};
 
 		default:

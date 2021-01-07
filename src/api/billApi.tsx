@@ -1,5 +1,5 @@
 import { api } from 'utils/api';
-
+const userId = '5ff38276fd149e22c08c6f27';
 export const billApi = {
 	getUserBills: function (params?) {
 		return api.get(`/bills/5ff38276fd149e22c08c6f27`, params);
@@ -8,6 +8,6 @@ export const billApi = {
 		return api.get(`/bills`, params);
 	},
 	create: function (data) {
-		return api.post(`/bills`, data);
+		return api.post(`/bills`, userId);
 	}
 };
