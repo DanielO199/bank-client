@@ -41,7 +41,7 @@ const fundReducer = (state = fundStore, action) => {
 			return {
 				...state,
 				imBusy: false,
-				savings: action.payload
+				savingsData: action.payload
 			};
 		case GET_SAVINGS_ERROR:
 			return {

@@ -24,7 +24,7 @@ export const fetchSavingsAction = () => async (dispatch) => {
 		dispatch({ type: GET_SAVINGS_REQUEST });
 		const responseData = await fundApi.getSavings();
 		console.log(responseData);
-		dispatch({ type: GET_SAVINGS_SUCCESS, payload: responseData.savings });
+		dispatch({ type: GET_SAVINGS_SUCCESS, payload: responseData.savingsData });
 	} catch (error) {
 		dispatch({ type: GET_SAVINGS_ERROR });
 	}
