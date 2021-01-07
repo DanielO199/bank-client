@@ -18,11 +18,11 @@ const instance = axios.create({
 	}
 });
 
-// instance.defaults.headers.put["Access-Control-Allow-Origin"] = "*";
+instance.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
 instance.defaults.headers.put['Content-Type'] = 'application/json';
-// instance.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+instance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 instance.defaults.headers.post['Content-Type'] = 'application/json';
-// instance.defaults.headers.delete["Access-Control-Allow-Origin"] = "*";
+instance.defaults.headers.delete['Access-Control-Allow-Origin'] = '*';
 
 const logger = (data, url) => {
 	if (process.env.NODE_ENV === 'development')

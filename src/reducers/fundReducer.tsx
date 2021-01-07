@@ -1,32 +1,54 @@
-import { initialState } from 'stores/billStore';
+import { fundStore } from 'stores/fundStore';
 
 import {
 	GET_FUNDS_REQUEST,
 	GET_FUNDS_SUCCESS,
-	GET_FUNDS_ERROR
+	GET_FUNDS_ERROR,
+	GET_SAVINGS_REQUEST,
+	GET_SAVINGS_SUCCESS,
+	GET_SAVINGS_ERROR
 } from 'types/fundTypes';
 
-const fundReducer = (state = initialState, action) => {
+const fundReducer = (state = fundStore, action) => {
 	switch (action.type) {
 		case GET_FUNDS_REQUEST:
 			return {
-				imBusy: true,
-				imWithError: false,
-				errorMsg: '',
-				...state
+				...state,
+				imBusy: true
 			};
 
 		case GET_FUNDS_SUCCESS:
 			return {
+				...state,
 				imBusy: false,
-				imWithError: false,
 				funds: action.payload
 			};
 		case GET_FUNDS_ERROR:
 			return {
+				...state,
 				imBusy: false,
 				imWithError: true,
 				errorMsg: 'Could not load total funds'
+			};
+
+		case GET_SAVINGS_REQUEST:
+			return {
+				...state,
+				imBusy: true
+			};
+
+		case GET_SAVINGS_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				savings: action.payload
+			};
+		case GET_SAVINGS_ERROR:
+			return {
+				...state,
+				imBusy: false,
+				imWithError: true,
+				errorMsg: 'Could not load savings'
 			};
 
 		default:

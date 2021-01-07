@@ -1,7 +1,7 @@
 import { api } from 'utils/api';
 
 export const fundApi = {
-	get: function (id?, params?) {
+	getFunds: function (id?, params?) {
 		return api.get(`/bills/funds/5ff38276fd149e22c08c6f27`, params);
 	},
 	getSavings: function (id?, params?) {

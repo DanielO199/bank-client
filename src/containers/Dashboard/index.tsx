@@ -1,11 +1,23 @@
-import { Bills, AvailableFunds } from './components';
+import {
+	Bills,
+	AvailableFunds,
+	Savings,
+	RecentTransations
+} from './components';
+
+import { Wrapper, Row } from './styles';
 
 export const DashboardContainer = () => {
 	return (
-		<>
-			<AvailableFunds />
-			<Bills />
-			inny komponent inny komponent
-		</>
+		<Wrapper>
+			<Row>
+				<AvailableFunds />
+				<Savings />
+			</Row>
+			<Row>
+				<Bills />
+				<RecentTransations />
+			</Row>
+		</Wrapper>
 	);
 };
