@@ -24,7 +24,7 @@ export const fetchTransactionsAction = () => async (dispatch) => {
 	try {
 		dispatch({ type: GET_TRANSACTIONS_REQUEST });
 		const responseData = await transactionApi.list();
-
+		console.log(responseData);
 		dispatch({
 			type: GET_TRANSACTIONS_SUCCESS,
 			payload: responseData.transactions

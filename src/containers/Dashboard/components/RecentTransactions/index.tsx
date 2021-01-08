@@ -4,8 +4,12 @@ import { Card } from 'antd';
 
 import { fetchTransactionsAction } from 'actions/transactionActions';
 
-import { Spinner } from 'common/components';
+import { Spinner, CardItem } from 'common/components';
 import { RootState } from 'stores';
+
+const TransactionItem = ({ item }) => {
+	return <CardItem>{item.money}</CardItem>;
+};
 
 export const RecentTransactions = () => {
 	const { transactions, imBusy, imWithError } = useSelector(
@@ -16,17 +20,15 @@ export const RecentTransactions = () => {
 	useEffect(() => {
 		dispatch(fetchTransactionsAction());
 	}, []);
+
 	console.log(transactions);
 	if (imBusy) return <Spinner />;
 	return (
 		<div style={{ width: '50%' }}>
-			<Card
-				title="Recent transactions"
-				headStyle={{ backgroundColor: 'red' }}
-				style={{ width: '100%' }}>
-				<p>Card content</p>
-				<p>Card content</p>
-				<p>Card content</p>
+			<Card type="inner" title="Bills">
+				{transactions.map((item) => (
+					<TransactionItem item={item} />
+				))}
 			</Card>
 		</div>
 	);

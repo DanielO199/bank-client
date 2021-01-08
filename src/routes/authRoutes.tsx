@@ -1,18 +1,8 @@
-import Loadable from 'react-loadable';
-
 import DashboardPage from 'views/Dashboard';
+import PaymentPage from 'views/Payment';
 import HistoryPage from 'views/History';
-import { ProtectedRoute, RerouteLogged, Spinner } from 'common/components';
-
-// const DashboardPage = Loadable({
-// 	loader: () => import('views/Dashboard'),
-// 	loading: Spinner
-// });
-
-// const HistoryPage = Loadable({
-// 	loader: () => import('views/History'),
-// 	loading: Spinner
-// });
+import SettingsPage from 'views/Settings';
+import { ProtectedRoute, RerouteLogged } from 'common/components';
 
 export const authRoutes = [
 	{
@@ -21,8 +11,18 @@ export const authRoutes = [
 		component: DashboardPage
 	},
 	{
+		path: '/payments',
+		name: 'Create Payment',
+		component: PaymentPage
+	},
+	{
 		path: '/history',
 		name: 'User History Payments',
 		component: HistoryPage
+	},
+	{
+		path: '/settings',
+		name: 'User Settings',
+		component: SettingsPage
 	}
 ];

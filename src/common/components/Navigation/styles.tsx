@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Menu } from 'antd';
-import { Link } from 'react-router-dom';
 
 import { backgroundColor } from 'common/globals/theme';
 
@@ -14,7 +13,7 @@ export const StyledMenuItem = styled(Menu.Item)`
 		margin: 0 20px 0 10px;
 	}
 	a {
-		/* color: red; */
+		color: red;
 		&.active {
 			pointer-events: none;
 			user-select: none;
@@ -24,14 +23,4 @@ export const StyledMenuItem = styled(Menu.Item)`
 
 export const StyledMenu = styled(Menu)`
 	background-color: ${backgroundColor};
-`;
-
-export const StyledLink = styled(Link)`
-	a {
-		color: green;
-		&.active {
-			pointer-events: none;
-			user-select: none;
-		}
-	}
 `;

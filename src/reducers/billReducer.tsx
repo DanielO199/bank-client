@@ -23,8 +23,8 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 		case CREATE_NEW_BILL_SUCCESS:
 			return {
 				...state,
-				imBusy: false
-				// userBills: [...state.userBills, action.bill]
+				imBusy: false,
+				userBills: [...state.userBills, action.bill]
 			};
 
 		case GET_USER_BILLS_REQUEST:

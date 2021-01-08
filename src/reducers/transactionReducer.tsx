@@ -20,6 +20,19 @@ const transactionReducer = (
 				imBusy: true
 			};
 
+		case GET_TRANSACTIONS_REQUEST:
+			return {
+				...state,
+				imBusy: true
+			};
+
+		case GET_TRANSACTIONS_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				transactions: action.payload
+			};
+
 		default:
 			return { ...state };
 	}
