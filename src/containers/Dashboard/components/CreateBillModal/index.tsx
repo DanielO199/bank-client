@@ -9,8 +9,22 @@ export const CreateBillModal = ({ isModalOpen, handleCancel }) => {
 	const [selectedValue, setSelectedValue] = useState();
 	const dispatch = useDispatch();
 
-	const handleSubmit = () => {
-		dispatch(createNewBillAction(selectedValue));
+	const creatorId = '5ff38276fd149e22c08c6f27';
+
+	const handleSubmit = async () => {
+		dispatch(createNewBillAction(creatorId));
+
+		// const rawResponse = await fetch('http://localhost:5000/api/bills', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		Accept: 'application/json',
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({ creatorId: creatorId })
+		// });
+		// const content = await rawResponse.json();
+
+		// console.log(content);
 
 		handleCancel();
 	};

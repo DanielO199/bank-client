@@ -2,7 +2,7 @@ import DashboardPage from 'views/Dashboard';
 import PaymentPage from 'views/Payment';
 import HistoryPage from 'views/History';
 import SettingsPage from 'views/Settings';
-import { ProtectedRoute, RerouteLogged } from 'common/components';
+import { ProtectedRoute } from 'common/components';
 
 export const authRoutes = [
 	{

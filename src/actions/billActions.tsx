@@ -12,10 +12,10 @@ import { IBillStore } from 'types/billTypes';
 
 import { billApi } from 'api/billApi';
 
-export const createNewBillAction = (bill: IBillStore) => async (dispatch) => {
+export const createNewBillAction = (creatorId: string) => async (dispatch) => {
 	try {
 		dispatch({ type: CREATE_NEW_BILL_REQUEST });
-		const responseData = await billApi.create(bill);
+		const responseData = await billApi.create(creatorId);
 
 		dispatch({ type: CREATE_NEW_BILL_SUCCESS, payload: responseData.bill });
 	} catch (error) {

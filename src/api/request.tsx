@@ -45,7 +45,7 @@ export const request = (_url, _config: any = {}) => {
 		req.headers = {};
 	}
 
-	req.headers['Authorization'] = `Bearer ${authStore.accessToken}`;
+	// req.headers['Authorization'] = `Bearer ${authStore.accessToken}`;
 	// req.headers['X-Lang'] = localStorageGetItem('language');
 
 	if (_config.multipart) {
