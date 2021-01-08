@@ -1,12 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card } from 'antd';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
 import { fetchUserBillsAction } from 'actions/billActions';
 import { CreateBillModal } from 'containers/Dashboard/components';
-import { Spinner } from 'common/components';
+import { Spinner, Card, CardItem } from 'common/components';
 import { RootState } from 'stores';
+
+const NewBillIcon = ({ showModal }) => {
+	return (
+		<span onClick={showModal}>
+			<PlusCircleOutlined />
+			Create new bill
+		</span>
+	);
+};
+
+const BillItem = ({ item }) => {
+	return <CardItem>{item.accountNumber}</CardItem>;
+};
 
 export const Bills = () => {
 	const [isModalOpen, setModalIsOpen] = useState(false);
@@ -22,22 +34,16 @@ export const Bills = () => {
 		dispatch(fetchUserBillsAction());
 	}, []);
 
-	console.log(userBills);
 	if (imBusy) return <Spinner />;
 	return (
 		<div style={{ width: '50%' }}>
 			<CreateBillModal isModalOpen={isModalOpen} handleCancel={closeModal} />
 			<Card
+				type="inner"
 				title="Bills"
-				extra={
-					<span onClick={showModal}>
-						<PlusCircleOutlined />
-						Create new bill
-					</span>
-				}
-				style={{ width: '100%' }}>
+				extra={<NewBillIcon showModal={showModal} />}>
 				{userBills.map((item) => (
-					<p>{item.accountNumber}</p>
+					<BillItem item={item} />
 				))}
 			</Card>
 		</div>

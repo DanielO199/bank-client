@@ -11,3 +11,5 @@ export { Navigation } from './Navigation';
 export { Sidebar } from './Sidebar';
 export { SideDrawer } from './SideDrawer';
 export { Spinner } from './Spinner';
+export { Table } from './Table';
+export { Card, CardItem } from './Card';
