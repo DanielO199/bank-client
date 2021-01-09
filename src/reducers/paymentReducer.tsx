@@ -1,4 +1,4 @@
-import { NEXT_STEP, PREVIOUS_STEP } from 'types/paymentTypes';
+import { NEXT_STEP, PREVIOUS_STEP, INPUT_CHANGE } from 'types/paymentTypes';
 
 import { paymentStore } from 'stores/paymentStore';
 
@@ -16,14 +16,7 @@ const paymentReducer = (state = paymentStore, action) => {
 				currentStep: state.currentStep - 1
 			};
 
-		case 'SET_BILL':
-			return {
-				...state,
-				bill: action.payload
-			};
-
-		case 'INPUT_CHANGE':
-			console.log(state, action);
+		case INPUT_CHANGE:
 			return {
 				...state,
 				[action.input]: action.value

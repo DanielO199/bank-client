@@ -1,4 +1,6 @@
 import {
+	RECEIVE_AUTHORIZATION_KEY_REQUEST,
+	RECEIVE_AUTHORIZATION_KEY_SUCCESS,
 	CREATE_TRANSACTION_REQUEST,
 	CREATE_TRANSACTION_SUCCESS,
 	GET_TRANSACTIONS_REQUEST,
@@ -10,6 +12,19 @@ import { transactionStore } from 'stores/transactionStore';
 
 const transactionReducer = (state = transactionStore, action) => {
 	switch (action.type) {
+		case RECEIVE_AUTHORIZATION_KEY_REQUEST:
+			return {
+				...state,
+				imBusy: true
+			};
+
+		case RECEIVE_AUTHORIZATION_KEY_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				isReceived: true
+			};
+
 		case CREATE_TRANSACTION_REQUEST:
 			return {
 				...state,

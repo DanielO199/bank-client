@@ -4,7 +4,7 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 
 import { fetchUserBillsAction } from 'actions/billActions';
-import { setBill, inputChange } from 'actions/paymentActions';
+import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
 // const OptionItem =({bill})=> {

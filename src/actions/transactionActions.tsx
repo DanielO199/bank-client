@@ -1,4 +1,6 @@
 import {
+	RECEIVE_AUTHORIZATION_KEY_REQUEST,
+	RECEIVE_AUTHORIZATION_KEY_SUCCESS,
 	CREATE_TRANSACTION_REQUEST,
 	CREATE_TRANSACTION_SUCCESS,
 	GET_TRANSACTIONS_REQUEST,
@@ -7,6 +9,17 @@ import {
 } from 'types/transactionTypes';
 
 import { transactionApi } from 'api/transactionApi';
+
+export const receiveAuthorizationKeyAction = (data) => async (dispatch) => {
+	try {
+		dispatch({ type: RECEIVE_AUTHORIZATION_KEY_REQUEST });
+		// await transactionApi.receiveAuthorizationKey(data);
+
+		dispatch({ type: RECEIVE_AUTHORIZATION_KEY_SUCCESS });
+	} catch (error) {
+		// dispatch({ type: GET_USER_BILLS_ERROR });
+	}
+};
 
 export const createNewTransactionAction = (transaction) => async (dispatch) => {
 	try {

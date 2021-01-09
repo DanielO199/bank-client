@@ -1,4 +1,4 @@
-import { NEXT_STEP, PREVIOUS_STEP, SET_BILL } from 'types/paymentTypes';
+import { NEXT_STEP, PREVIOUS_STEP } from 'types/paymentTypes';
 
 export const nextStep = () => {
 	return {
@@ -12,15 +12,7 @@ export const prevStep = () => {
 	};
 };
 
-export const setBill = (payload) => {
-	return {
-		type: SET_BILL,
-		payload
-	};
-};
-
 export const inputChange = (input, value) => {
-	console.log(input);
 	return {
 		type: 'INPUT_CHANGE',
 		input,

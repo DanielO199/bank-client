@@ -14,20 +14,18 @@ import { RootState } from 'stores';
 //   )
 // }
 
-export const Money = () => {
-	const { money } = useSelector((state: RootState) => state.payment);
+export const Title = () => {
+	const { title } = useSelector((state: RootState) => state.payment);
 	const dispatch = useDispatch();
 
-	const { Option } = Select;
-
 	const handleChange = (value) => {
-		dispatch(inputChange('money', value));
+		dispatch(inputChange('title', value));
 	};
 
 	return (
 		<div>
 			<Input
-				value={money}
+				value={title}
 				onChange={(e) => handleChange(e.target.value)}
 				placeholder="Input a number"
 				maxLength={25}

@@ -7,8 +7,11 @@ import { nextStep, prevStep } from 'actions/paymentActions';
 
 const { Step } = Steps;
 
-export const St = ({ steps }) => {
+export const St = ({ steps, onSubmit }) => {
 	const { currentStep } = useSelector((state: RootState) => state.payment);
+
+	const { isReceived } = useSelector((state: RootState) => state.transaction);
+
 	const dispatch = useDispatch();
 
 	const next = () => {
@@ -18,7 +21,7 @@ export const St = ({ steps }) => {
 	const prev = () => {
 		dispatch(prevStep());
 	};
-
+	// #f2f4f7
 	return (
 		<>
 			<Steps current={currentStep} responsive={true}>
@@ -26,25 +29,40 @@ export const St = ({ steps }) => {
 					<Step key={item.title} title={item.title} />
 				))}
 			</Steps>
-			<div className="steps-content">{steps[currentStep].content}</div>
-			<div className="steps-action">
-				{currentStep < steps.length - 1 && (
-					<Button type="primary" onClick={next}>
-						Next
-					</Button>
-				)}
-				{currentStep === steps.length - 1 && (
-					<Button
-						type="primary"
-						onClick={() => message.success('Processing complete!')}>
-						Done
-					</Button>
-				)}
-				{currentStep > 0 && (
-					<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-						Previous
-					</Button>
-				)}
+			<div style={{ backgroundColor: 'greenyellow', padding: '15px' }}>
+				<div
+					style={{
+						margin: 'auto',
+						maxWidth: '300px'
+					}}>
+					<div className="steps-content" style={{ marginBottom: '10px' }}>
+						{steps[currentStep].content}
+					</div>
+					<div className="steps-action">
+						{currentStep < steps.length - 1 && (
+							<Button type="primary" onClick={next}>
+								Next
+							</Button>
+						)}
+						{!isReceived && currentStep === steps.length - 1 && (
+							<Button type="primary" onClick={onSubmit}>
+								Receive authorization key
+							</Button>
+						)}
+						{isReceived && (
+							<Button type="primary" onClick={onSubmit}>
+								Receive authorization key
+							</Button>
+						)}
+						{isReceived && <input value={'123'} />}
+
+						{!isReceived && currentStep > 0 && (
+							<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+								Previous
+							</Button>
+						)}
+					</div>
+				</div>
 			</div>
 		</>
 	);
