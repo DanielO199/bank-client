@@ -21,7 +21,7 @@ export const St = ({ steps }) => {
 
 	return (
 		<>
-			<Steps current={currentStep} responsive>
+			<Steps current={currentStep} responsive={true}>
 				{steps.map((item) => (
 					<Step key={item.title} title={item.title} />
 				))}

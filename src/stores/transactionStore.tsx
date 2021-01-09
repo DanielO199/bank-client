@@ -5,5 +5,10 @@ export const transactionStore = {
 	availableFunds: 0,
 	savings: 0,
 	transactions: [],
-	recentTransactions: []
+	recentTransactions: [],
+	pagination: {
+		current: 1,
+		pageSize: 1,
+		total: 0
+	}
 };

@@ -8,7 +8,7 @@ import { Table } from 'common/components';
 import { RootState } from 'stores';
 
 export const HistoryList = () => {
-	const { transactions, imBusy, imWithError } = useSelector(
+	const { transactions, pagination, imBusy } = useSelector(
 		(state: RootState) => state.transaction
 	);
 	const dispatch = useDispatch();
@@ -20,8 +20,20 @@ export const HistoryList = () => {
 			key: ['senderName', 'senderAccountNumber'],
 			render: (text, text2) => (
 				<>
-					<div>{text}</div>
-					<div>{text2.senderAccountNumber}</div>
+					<div
+						style={{
+							textOverflow: 'ellipsis',
+							overflow: 'hidden'
+						}}>
+						{text}
+					</div>
+					<div
+						style={{
+							textOverflow: 'ellipsis',
+							overflow: 'hidden'
+						}}>
+						{text2.senderAccountNumber}
+					</div>
 				</>
 			)
 		},
@@ -47,15 +59,29 @@ export const HistoryList = () => {
 		}
 	];
 
+	const initialPagination = {
+		current: 1,
+		pageSize: 5
+	};
+
 	useEffect(() => {
-		dispatch(fetchTransactionsAction());
+		dispatch(fetchTransactionsAction(initialPagination));
 	}, []);
+
+	const handleTableChange = async (pagination, filters, sorter) => {
+		dispatch(fetchTransactionsAction(pagination));
+	};
+
 	return (
-		<Table
-			columns={columns}
-			rowKey={(record) => record._id}
-			data={transactions}
-			loading={imBusy}
-		/>
+		<>
+			<Table
+				columns={columns}
+				rowKey={(record) => record._id}
+				data={transactions}
+				loading={imBusy}
+				onChange={handleTableChange}
+				pagination={pagination}
+			/>
+		</>
 	);
 };

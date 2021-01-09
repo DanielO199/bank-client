@@ -5,7 +5,6 @@ import {
 	GET_TRANSACTIONS_SUCCESS,
 	GET_TRANSACTIONS_ERROR
 } from 'types/transactionTypes';
-import { IBillStore } from 'types/billTypes';
 
 import { transactionApi } from 'api/transactionApi';
 
@@ -20,14 +19,13 @@ export const createNewTransactionAction = (transaction) => async (dispatch) => {
 	}
 };
 
-export const fetchTransactionsAction = () => async (dispatch) => {
+export const fetchTransactionsAction = (params?) => async (dispatch) => {
 	try {
 		dispatch({ type: GET_TRANSACTIONS_REQUEST });
-		const responseData = await transactionApi.list();
-		console.log(responseData);
+		const responseData = await transactionApi.list(params);
 		dispatch({
 			type: GET_TRANSACTIONS_SUCCESS,
-			payload: responseData.transactions
+			payload: responseData.results
 		});
 	} catch (error) {
 		dispatch({ type: GET_TRANSACTIONS_ERROR });

@@ -6,13 +6,9 @@ import {
 	GET_TRANSACTIONS_ERROR
 } from 'types/transactionTypes';
 
-import { BillActionTypes } from 'types/billTypes';
 import { transactionStore } from 'stores/transactionStore';
 
-const transactionReducer = (
-	state = transactionStore,
-	action: BillActionTypes
-) => {
+const transactionReducer = (state = transactionStore, action) => {
 	switch (action.type) {
 		case CREATE_TRANSACTION_REQUEST:
 			return {
@@ -30,7 +26,8 @@ const transactionReducer = (
 			return {
 				...state,
 				imBusy: false,
-				transactions: action.payload
+				transactions: action.payload.transactions,
+				pagination: action.payload.pagination
 			};
 
 		default:
