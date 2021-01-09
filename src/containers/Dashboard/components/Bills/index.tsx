@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
-import { fetchUserBillsAction } from 'actions/billActions';
+import { fetchUserBillsAction, createNewBillAction } from 'actions/billActions';
 import { CreateBillModal } from 'containers/Dashboard/components';
 import { Spinner, Card, CardItem } from 'common/components';
 import { RootState } from 'stores';
@@ -30,14 +30,38 @@ export const Bills = () => {
 	const showModal = () => setModalIsOpen(true);
 	const closeModal = () => setModalIsOpen(false);
 
+	const creatorId = '5ff38276fd149e22c08c6f27';
+
+	const handleSubmit = async () => {
+		dispatch(createNewBillAction(creatorId));
+
+		// const rawResponse = await fetch('http://localhost:5000/api/bills', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		Accept: 'application/json',
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({ creatorId: creatorId })
+		// });
+		// const content = await rawResponse.json();
+
+		// console.log(content);
+		// dispatch(fetchUserBillsAction());
+		closeModal();
+	};
+
 	useEffect(() => {
 		dispatch(fetchUserBillsAction());
 	}, []);
 
-	if (imBusy) return <Spinner />;
+	// if (imBusy) return <Spinner />;
 	return (
 		<div style={{ width: '50%' }}>
-			<CreateBillModal isModalOpen={isModalOpen} handleCancel={closeModal} />
+			<CreateBillModal
+				isModalOpen={isModalOpen}
+				handleCancel={closeModal}
+				handleSubmit={handleSubmit}
+			/>
 			<Card
 				type="inner"
 				title="Bills"

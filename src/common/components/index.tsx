@@ -2,6 +2,7 @@ export { default as RerouteLogged } from './RerouteLogged';
 export { default as ProtectedRoute } from './ProtectedRoute';
 
 export { Button } from './Button';
+export { Card, CardItem } from './Card';
 export { Content } from './Content';
 export { Header } from './Header';
 export { Input } from './Input';
@@ -11,5 +12,5 @@ export { Navigation } from './Navigation';
 export { Sidebar } from './Sidebar';
 export { SideDrawer } from './SideDrawer';
 export { Spinner } from './Spinner';
+export { St } from './Step';
 export { Table } from './Table';
-export { Card, CardItem } from './Card';

@@ -15,9 +15,17 @@ import { billApi } from 'api/billApi';
 export const createNewBillAction = (creatorId: string) => async (dispatch) => {
 	try {
 		dispatch({ type: CREATE_NEW_BILL_REQUEST });
-		const responseData = await billApi.create(creatorId);
+		// const responseData = await billApi.create(creatorId);
+		const rawResponse = await fetch('http://localhost:5000/api/bills', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ creatorId: '5ff38276fd149e22c08c6f27' })
+		});
+		const content = await rawResponse.json();
 
-		dispatch({ type: CREATE_NEW_BILL_SUCCESS, payload: responseData.bill });
+		dispatch({ type: CREATE_NEW_BILL_SUCCESS, payload: content.bill });
 	} catch (error) {
 		dispatch({ type: GET_USER_BILLS_ERROR });
 	}
