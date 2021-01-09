@@ -43,6 +43,22 @@ const billReducer = (state = initialState, action: BillActionTypes) => {
 		case GET_USER_BILLS_ERROR:
 			return { ...state };
 
+		case GET_ALL_BILLS_REQUEST:
+			return {
+				...state,
+				imBusy: true
+			};
+
+		case GET_ALL_BILLS_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				allBills: action.payload
+			};
+
+		case GET_ALL_BILLS_ERROR:
+			return { ...state };
+
 		default:
 			return { ...state };
 	}

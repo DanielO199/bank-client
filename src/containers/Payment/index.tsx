@@ -1,5 +1,5 @@
 import { St } from 'common/components';
-import { Bill, Money, Receiver } from 'containers/Payment/components';
+import { Bill, Money, Overview, Receiver } from 'containers/Payment/components';
 
 const steps = [
 	{
@@ -20,7 +20,7 @@ const steps = [
 	},
 	{
 		title: 'Overview',
-		content: 'Last-content'
+		content: <Overview />
 	}
 ];
 

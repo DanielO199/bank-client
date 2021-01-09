@@ -18,3 +18,12 @@ export const setBill = (payload) => {
 		payload
 	};
 };
+
+export const inputChange = (input, value) => {
+	console.log(input);
+	return {
+		type: 'INPUT_CHANGE',
+		input,
+		value
+	};
+};

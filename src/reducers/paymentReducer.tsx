@@ -22,6 +22,13 @@ const paymentReducer = (state = paymentStore, action) => {
 				bill: action.payload
 			};
 
+		case 'INPUT_CHANGE':
+			console.log(state, action);
+			return {
+				...state,
+				[action.input]: action.value
+			};
+
 		default:
 			return { ...state };
 	}

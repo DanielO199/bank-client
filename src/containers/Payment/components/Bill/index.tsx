@@ -4,7 +4,7 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 
 import { fetchUserBillsAction } from 'actions/billActions';
-import { setBill } from 'actions/paymentActions';
+import { setBill, inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
 // const OptionItem =({bill})=> {
@@ -25,7 +25,7 @@ export const Bill = () => {
 	const { Option } = Select;
 
 	const handleChange = (value) => {
-		dispatch(setBill(value));
+		dispatch(inputChange('bill', value));
 	};
 
 	useEffect(() => {

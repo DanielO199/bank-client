@@ -5,7 +5,7 @@ export const billApi = {
 		return api.get(`/bills/5ff38276fd149e22c08c6f27`, params);
 	},
 	getAllBills: function (params?) {
-		return api.get(`/bills`, params);
+		return api.get(`/bills/all`, params);
 	},
 	create: function (creatorId) {
 		return api.post(`/bills`, creatorId);
