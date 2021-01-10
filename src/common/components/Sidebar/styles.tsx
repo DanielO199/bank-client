@@ -1,14 +1,27 @@
 import styled from 'styled-components';
 import { Layout } from 'antd';
 
-import { backgroundColor } from 'common/globals/theme';
+import { borderColor, backgroundColor } from 'common/globals/theme';
 
 export const StyledSidebar = styled(Layout.Sider)`
 	height: 100vh;
 	left: 0;
 	transition: all 0.1s ease-in-out;
-	box-shadow: rgba(17, 17, 17, 0.06) 4px 0px 8px -3px;
-	background-color: ${backgroundColor};
+	background-color: white;
+	border-right: solid ${borderColor} 1px;
+
+	.ant-menu-inline {
+		border: none;
+	}
+
+	.ant-menu-item {
+		font-weight: 500;
+		margin: 0;
+		padding: 0;
+		padding-left: 0px;
+	}
 `;
 
-export const StyledLayout = styled(Layout)``;
+export const StyledLayout = styled(Layout)`
+	background-color: ${backgroundColor};
+`;

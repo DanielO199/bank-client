@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
+import { borderColor } from 'common/globals/theme';
+
 export const StyledLogo = styled.div`
-	height: 32px;
-	background: rgba(255, 255, 255, 0.3);
-	margin: 16px;
+	border-bottom: solid ${borderColor} 1px;
+	height: 64px;
+	line-height: 64px;
+	text-align: center;
 `;

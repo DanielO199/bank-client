@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Menu } from 'antd';
 
-import { backgroundColor } from 'common/globals/theme';
+import { borderColor, backgroundColorLayout } from 'common/globals/theme';
 
 export const StyledMenuItem = styled(Menu.Item)`
 	margin: 0;
@@ -22,5 +22,6 @@ export const StyledMenuItem = styled(Menu.Item)`
 `;
 
 export const StyledMenu = styled(Menu)`
-	background-color: ${backgroundColor};
+	background-color: ${backgroundColorLayout};
+	border-top: solid ${borderColor} 1px;
 `;

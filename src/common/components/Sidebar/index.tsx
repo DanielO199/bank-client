@@ -12,7 +12,16 @@ export const Sidebar = ({ children }) => {
 
 	return (
 		<StyledLayout>
-			<StyledSidebar trigger={null} collapsible collapsed={isCollapsedSidebar}>
+			<StyledSidebar
+				trigger={null}
+				collapsible
+				collapsed={isCollapsedSidebar}
+				breakpoint="sm"
+				width={250}
+				collapsedWidth="0"
+				onCollapse={(collapsed, type) => {
+					toggle();
+				}}>
 				<Logo />
 				<Navigation />
 			</StyledSidebar>
