@@ -9,8 +9,9 @@ export const Wrapper = styled.div`
 	justify-content: ${({ justifyContent = 'space-between' }: Props) =>
 		justifyContent};
 	align-items: center;
-	flex-grow: 2;
+	flex-grow: 3;
 	min-width: 250px;
+	min-height: 120px;
 	background-color: rgb(243, 243, 243);
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	margin-right: 8px;

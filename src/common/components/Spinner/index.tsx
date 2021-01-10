@@ -69,6 +69,13 @@
 // 	right: 20px;
 // 	text-align: center;
 // `;
+
+import { LoadingOutlined } from '@ant-design/icons';
 export const Spinner = () => {
-	return <div>LOADING</div>;
+	return (
+		<div style={{ textAlign: 'center' }}>
+			{' '}
+			<LoadingOutlined spin />
+		</div>
+	);
 };

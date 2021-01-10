@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card } from 'antd';
 
 import { fetchTransactionsAction } from 'actions/transactionActions';
 
-import { Spinner, CardItem } from 'common/components';
+import { Spinner, CardItem, Card } from 'common/components';
 import { RootState } from 'stores';
+import { Wrapper } from './styles';
 
 const TransactionItem = ({ item }) => {
 	return <CardItem>{item.money}</CardItem>;
@@ -21,15 +21,19 @@ export const RecentTransactions = () => {
 		dispatch(fetchTransactionsAction());
 	}, []);
 
-	console.log(transactions);
-	if (imBusy) return <Spinner />;
+	if (imBusy)
+		return (
+			<Wrapper justifyContent="center">
+				<Spinner />
+			</Wrapper>
+		);
 	return (
-		<div style={{ width: '50%' }}>
-			<Card type="inner" title="Bills">
+		<Wrapper>
+			<Card type="inner" title="Recent transactions">
 				{transactions.map((item) => (
 					<TransactionItem item={item} />
 				))}
 			</Card>
-		</div>
+		</Wrapper>
 	);
 };

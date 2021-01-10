@@ -2,7 +2,8 @@ import {
 	Bills,
 	AvailableFunds,
 	Savings,
-	RecentTransactions
+	RecentTransactions,
+	Tip
 } from './components';
 
 import { Wrapper, Row } from './styles';
@@ -13,6 +14,7 @@ export const DashboardContainer = () => {
 			<Row>
 				<AvailableFunds />
 				<Savings />
+				<Tip />
 			</Row>
 			<Row>
 				<Bills />

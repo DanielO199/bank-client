@@ -3,19 +3,45 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAvailableFundsAction } from 'actions/fundActions';
 import { Spinner } from 'common/components';
 import { RootState } from 'stores';
-import { Wrapper } from '../Savings/styles';
+import { Wrapper } from './styles';
+import { LineChart, Line } from 'recharts';
+import { primaryColor } from 'common/globals/theme';
 
 export const AvailableFunds = () => {
-	// const funds = useSelector((state: RootState) => state.fund.funds);
-	const { funds, imBusy, imWithError } = useSelector(
-		(state: RootState) => state.fund
-	);
+	const { funds, imBusy } = useSelector((state: RootState) => state.fund);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(fetchAvailableFundsAction());
 	}, []);
-	console.log(funds);
-	if (imBusy) return <Spinner />;
-	return <Wrapper>{funds}</Wrapper>;
+
+	const data = [
+		{ date: 'data utworzenia konta', money: 4000 },
+		{ date: 'July', money: 3000 },
+		{ date: 'August', money: 6000 }
+	];
+
+	if (imBusy)
+		return (
+			<Wrapper justifyContent="center">
+				<Spinner />
+			</Wrapper>
+		);
+	return (
+		<Wrapper>
+			<div>
+				<h2>Available Funds</h2>
+				{funds}PLN
+			</div>
+			<LineChart width={200} height={100} data={data}>
+				<Line
+					type="monotone"
+					dataKey="money"
+					stroke={primaryColor}
+					strokeWidth={1}
+					dot={false}
+				/>
+			</LineChart>
+		</Wrapper>
+	);
 };

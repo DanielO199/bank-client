@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
+import { backgroundColorLayout } from 'common/globals/theme';
+
 export const StyledContent = styled.div`
-	background: rgba(255, 255, 255, 0.3);
-	margin: 16px;
+	background: ${backgroundColorLayout};
+	margin: 5rem auto;
+	width: 100%;
 `;

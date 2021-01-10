@@ -2,7 +2,7 @@ import { StyledCard, StyledCardItem } from './styles';
 
 interface ICard {
 	children: any;
-	title: string;
+	title?: string;
 	extra?: any;
 	style?: object;
 	type?: any;

@@ -6,6 +6,7 @@ import { fetchUserBillsAction, createNewBillAction } from 'actions/billActions';
 import { CreateBillModal } from 'containers/Dashboard/components';
 import { Spinner, Card, CardItem } from 'common/components';
 import { RootState } from 'stores';
+import { Wrapper } from './styles';
 
 const NewBillIcon = ({ showModal }) => {
 	return (
@@ -54,9 +55,14 @@ export const Bills = () => {
 		dispatch(fetchUserBillsAction());
 	}, []);
 
-	// if (imBusy) return <Spinner />;
+	if (imBusy)
+		return (
+			<Wrapper justifyContent="center">
+				<Spinner />
+			</Wrapper>
+		);
 	return (
-		<div style={{ width: '50%' }}>
+		<Wrapper>
 			<CreateBillModal
 				isModalOpen={isModalOpen}
 				handleCancel={closeModal}
@@ -70,6 +76,6 @@ export const Bills = () => {
 					<BillItem item={item} />
 				))}
 			</Card>
-		</div>
+		</Wrapper>
 	);
 };

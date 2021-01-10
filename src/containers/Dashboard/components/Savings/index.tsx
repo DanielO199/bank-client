@@ -6,37 +6,39 @@ import { fetchSavingsAction } from 'actions/fundActions';
 import { Spinner } from 'common/components';
 import { RootState } from 'stores';
 import { Wrapper } from './styles';
+import { primaryColor } from 'common/globals/theme';
 
 export const Savings = () => {
-	// const funds = useSelector((state: RootState) => state.fund.funds);
-	const { savings, savingsData, imBusy, imWithError } = useSelector(
+	const { savings, savingsData, imBusy } = useSelector(
 		(state: RootState) => state.fund
 	);
 	const dispatch = useDispatch();
 
-	const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-	const data = [
-		{ name: 'outgoing', money: 24 },
-		{ name: 'incoming', money: 2 }
-	];
+	const COLORS = [`${primaryColor}`, '#c40000'];
 
 	useEffect(() => {
 		dispatch(fetchSavingsAction());
 	}, []);
-	console.log(savingsData);
-	if (imBusy) return <Spinner />;
+
+	if (imBusy)
+		return (
+			<Wrapper justifyContent="center">
+				<Spinner />
+			</Wrapper>
+		);
 	return (
 		<Wrapper>
-			<div>80%</div>
+			<div>
+				<h1>Savings</h1>
+				<h2>80%</h2>
+			</div>
 			<PieChart margin={0} width={100} height={60}>
 				<Pie
 					dataKey="money"
-					// isAnimationActive={false}
 					data={savingsData}
 					cx={60}
 					cy={30}
-					innerRadius={25}
+					innerRadius={27}
 					outerRadius={30}
 					paddingAngle={0}
 					fill="#82ca9d"
