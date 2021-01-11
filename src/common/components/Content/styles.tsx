@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-import { backgroundColorLayout } from 'common/globals/theme';
+import { backgroundColor } from 'common/globals/theme';
 
-export const StyledContent = styled.div`
-	background: ${backgroundColorLayout};
-	margin: 5rem auto;
+export const StyledContent = styled.main`
+	background: ${backgroundColor};
+	margin: 2rem auto;
+	padding: 20px;
 	width: 100%;
 `;

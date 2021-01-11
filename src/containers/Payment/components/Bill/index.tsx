@@ -7,17 +7,8 @@ import { fetchUserBillsAction } from 'actions/billActions';
 import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
-// const OptionItem =({bill})=> {
-//   return (<>
-//   <Option value={bill} >Jack</Option>
-//   </>
-//   )
-// }
-
 export const Bill = () => {
-	const { userBills, imBusy, imWithError } = useSelector(
-		(state: RootState) => state.bill
-	);
+	const { userBills } = useSelector((state: RootState) => state.bill);
 
 	const { bill } = useSelector((state: RootState) => state.payment);
 	const dispatch = useDispatch();
@@ -47,7 +38,9 @@ export const Bill = () => {
 					style={{ width: 120 }}
 					onChange={handleChange}>
 					{userBills.map((bill) => (
-						<Option value={bill.accountNumber}>{bill.accountNumber}</Option>
+						<Option key={bill.accountNumber} value={bill.accountNumber}>
+							{bill.accountNumber}
+						</Option>
 					))}
 				</Select>
 			</Form.Item>

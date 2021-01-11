@@ -6,58 +6,13 @@ import { fetchTransactionsAction } from 'actions/transactionActions';
 import { Table } from 'common/components';
 
 import { RootState } from 'stores';
+import { columns } from './columns';
 
 export const HistoryList = () => {
 	const { transactions, pagination, imBusy } = useSelector(
 		(state: RootState) => state.transaction
 	);
 	const dispatch = useDispatch();
-
-	const columns = [
-		{
-			title: 'Sender',
-			dataIndex: 'senderName',
-			key: ['senderName', 'senderAccountNumber'],
-			render: (text, text2) => (
-				<>
-					<div
-						style={{
-							textOverflow: 'ellipsis',
-							overflow: 'hidden'
-						}}>
-						{text}
-					</div>
-					<div
-						style={{
-							textOverflow: 'ellipsis',
-							overflow: 'hidden'
-						}}>
-						{text2.senderAccountNumber}
-					</div>
-				</>
-			)
-		},
-		{
-			title: 'Receiver',
-			dataIndex: 'receiverName',
-			key: 'receiverName'
-		},
-		{
-			title: 'Money',
-			dataIndex: 'money',
-			key: 'money'
-		},
-		{
-			title: 'Title',
-			key: 'title',
-			dataIndex: 'title'
-		},
-		{
-			title: 'Date',
-			key: 'createdAt',
-			dataIndex: 'createdAt'
-		}
-	];
 
 	const initialPagination = {
 		current: 1,
@@ -68,7 +23,7 @@ export const HistoryList = () => {
 		dispatch(fetchTransactionsAction(initialPagination));
 	}, []);
 
-	const handleTableChange = async (pagination, filters, sorter) => {
+	const handleTableChange = async (pagination) => {
 		dispatch(fetchTransactionsAction(pagination));
 	};
 

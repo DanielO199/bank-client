@@ -1,6 +1,7 @@
 export const primaryColor = '#1890ff';
 export const backgroundColorLayout = '#ffffff';
-export const backgroundColor = 'whitesmoke';
+export const backgroundColor = '#ffffff';
+//Need to change it here
 
 export const grayColor = '#1ss23';
 
