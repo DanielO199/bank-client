@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
+import { Select, Form, Input } from 'antd';
 
 import { fetchUserBillsAction } from 'actions/billActions';
 import { inputChange } from 'actions/paymentActions';
@@ -34,15 +34,25 @@ export const Bill = () => {
 
 	return (
 		<div>
-			selected Value ={bill}
-			<Select
+			<Form.Item
+				name="bill"
+				label="Bill"
+				rules={[
+					{
+						required: true
+					}
+				]}>
+				<Input />
+			</Form.Item>
+
+			{/* <Select
 				defaultValue={bill}
 				style={{ width: 120 }}
 				onChange={handleChange}>
 				{userBills.map((bill) => (
 					<Option value={bill.accountNumber}>{bill.accountNumber}</Option>
 				))}
-			</Select>
+			</Select> */}
 		</div>
 	);
 };
