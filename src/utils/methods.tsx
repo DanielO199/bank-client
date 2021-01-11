@@ -2,6 +2,10 @@ import { IPagination } from 'common/interfaces';
 import { createBrowserHistory } from 'history';
 import querystring from 'query-string';
 
+export const formatBill = (bill) => {
+	return bill.match(/.{1,4}/g).join(' ');
+};
+
 export const getParameterByName = (name, findIn = window.location.href) => {
 	var match = RegExp('[?&]' + name + '=([^&]*)').exec(findIn);
 	return match && decodeURIComponent(match[1].replace(/\+/g, ' '));

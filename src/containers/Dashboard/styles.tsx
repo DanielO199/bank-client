@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	max-width: 1100px;
 	margin: auto;
+	margin-top: 4rem;
 `;
 
 export const Row = styled.div`

@@ -30,10 +30,10 @@ export const AvailableFunds = () => {
 	return (
 		<Wrapper>
 			<div>
-				<h2>Available Funds</h2>
-				{funds}PLN
+				<p>Available Funds</p>
+				<h2>{funds} PLN</h2>
 			</div>
-			<LineChart width={200} height={100} data={data}>
+			<LineChart margin={{ top: 30 }} width={120} height={100} data={data}>
 				<Line
 					type="monotone"
 					dataKey="money"

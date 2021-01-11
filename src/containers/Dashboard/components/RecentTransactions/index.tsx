@@ -5,10 +5,21 @@ import { fetchTransactionsAction } from 'actions/transactionActions';
 
 import { Spinner, CardItem, Card } from 'common/components';
 import { RootState } from 'stores';
-import { Wrapper } from './styles';
+import { Wrapper, StyledName, StyledColumn } from './styles';
 
 const TransactionItem = ({ item }) => {
-	return <CardItem>{item.money}</CardItem>;
+	return (
+		<CardItem>
+			<div>
+				{item.title}
+				<div>{item.receiverName}</div>
+			</div>
+			<StyledColumn>
+				<StyledName>{item.createdAt.slice(0, 10)}</StyledName>
+				{item.money} PLN
+			</StyledColumn>
+		</CardItem>
+	);
 };
 
 export const RecentTransactions = () => {
@@ -29,7 +40,7 @@ export const RecentTransactions = () => {
 		);
 	return (
 		<Wrapper>
-			<Card type="inner" title="Recent transactions">
+			<Card title="Recent transactions">
 				{transactions.map((item) => (
 					<TransactionItem item={item} />
 				))}

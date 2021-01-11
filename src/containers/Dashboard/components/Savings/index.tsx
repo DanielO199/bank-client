@@ -29,7 +29,7 @@ export const Savings = () => {
 	return (
 		<Wrapper>
 			<div>
-				<h1>Savings</h1>
+				<p>Savings</p>
 				<h2>80%</h2>
 			</div>
 			<PieChart margin={0} width={100} height={60}>

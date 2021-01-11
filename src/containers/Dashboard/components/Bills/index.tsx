@@ -4,21 +4,27 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 
 import { fetchUserBillsAction, createNewBillAction } from 'actions/billActions';
 import { CreateBillModal } from 'containers/Dashboard/components';
+import { formatBill } from 'utils';
 import { Spinner, Card, CardItem } from 'common/components';
 import { RootState } from 'stores';
-import { Wrapper } from './styles';
+import { Wrapper, StyledSpan, StyledItem } from './styles';
 
 const NewBillIcon = ({ showModal }) => {
 	return (
-		<span onClick={showModal}>
+		<StyledSpan onClick={showModal}>
 			<PlusCircleOutlined />
 			Create new bill
-		</span>
+		</StyledSpan>
 	);
 };
 
 const BillItem = ({ item }) => {
-	return <CardItem>{item.accountNumber}</CardItem>;
+	return (
+		<CardItem>
+			<div>{formatBill(item.accountNumber)}</div>
+			<StyledItem>{item.money} PLN</StyledItem>
+		</CardItem>
+	);
 };
 
 export const Bills = () => {
@@ -36,18 +42,6 @@ export const Bills = () => {
 	const handleSubmit = async () => {
 		dispatch(createNewBillAction(creatorId));
 
-		// const rawResponse = await fetch('http://localhost:5000/api/bills', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		Accept: 'application/json',
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify({ creatorId: creatorId })
-		// });
-		// const content = await rawResponse.json();
-
-		// console.log(content);
-		// dispatch(fetchUserBillsAction());
 		closeModal();
 	};
 
