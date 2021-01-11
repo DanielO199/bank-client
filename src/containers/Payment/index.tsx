@@ -1,11 +1,13 @@
-import { Button, Form } from 'antd';
+import { Form } from 'antd';
 
 import { RootState } from 'stores';
 import { nextStep, prevStep } from 'actions/paymentActions';
 
-import { St } from 'common/components';
+import { FormSteps } from 'common/components';
 import {
 	Bill,
+	FormButtons,
+	FormContent,
 	Money,
 	Overview,
 	Receiver,
@@ -15,6 +17,29 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { receiveAuthorizationKeyAction } from 'actions/transactionActions';
 
+const steps = [
+	{
+		title: 'Bill',
+		content: <Bill />
+	},
+	{
+		title: 'Receiver',
+		content: <Receiver />
+	},
+	{
+		title: 'Money',
+		content: <Money />
+	},
+	{
+		title: 'Title',
+		content: <Title />
+	},
+	{
+		title: 'Overview',
+		content: <Overview />
+	}
+];
+
 export const PaymentContainer = () => {
 	const dispatch = useDispatch();
 	const userId = '5ff38276fd149e22c08c6f27';
@@ -23,50 +48,43 @@ export const PaymentContainer = () => {
 	};
 
 	const { currentStep } = useSelector((state: RootState) => state.payment);
-	const { isReceived } = useSelector((state: RootState) => state.transaction);
 
 	const [form] = Form.useForm();
 
 	const next = async () => {
-		let error;
 		try {
-			error = await form.validateFields(['bill']);
+			switch (currentStep) {
+				case 0:
+					await form.validateFields(['bill']);
+					break;
+
+				case 1:
+					await form.validateFields(['receiver']);
+					break;
+
+				case 2:
+					await form.validateFields(['money']);
+					break;
+
+				case 3:
+					await form.validateFields(['title']);
+					break;
+
+				default:
+					break;
+			}
+
 			dispatch(nextStep());
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	};
 
 	const prev = () => {
 		dispatch(prevStep());
 	};
 
-	const steps = [
-		{
-			title: 'Bill',
-			content: <Bill />
-		},
-		{
-			title: 'Receiver',
-			content: <Receiver />
-		},
-		{
-			title: 'Money',
-			content: <Money />
-		},
-		{
-			title: 'Title',
-			content: <Title />
-		},
-		{
-			title: 'Overview',
-			content: <Overview />
-		}
-	];
-
 	return (
 		<div>
-			<St steps={steps} />
+			<FormSteps steps={steps} currentStep={currentStep} />
 
 			<div style={{ backgroundColor: 'greenyellow', padding: '15px' }}>
 				<div
@@ -74,37 +92,14 @@ export const PaymentContainer = () => {
 						margin: 'auto',
 						maxWidth: '300px'
 					}}>
-					{/* Remove to other file */}
-					<Form form={form} onFinish={() => console.log('OK')}>
-						<div className="steps-content" style={{ marginBottom: '10px' }}>
-							{steps[currentStep].content}
-						</div>
-					</Form>
-					{/* Remove to other file */}
-					<div className="steps-action">
-						{currentStep < steps.length - 1 && (
-							<Button type="primary" onClick={next}>
-								Next
-							</Button>
-						)}
-						{!isReceived && currentStep === steps.length - 1 && (
-							<Button type="primary" onClick={receiveAuthorizationKey}>
-								Receive authorization key
-							</Button>
-						)}
-						{isReceived && (
-							<Button type="primary" onClick={() => console.log('confirm')}>
-								Confirm
-							</Button>
-						)}
-						{isReceived && <input value={'123'} />}
-
-						{!isReceived && currentStep > 0 && (
-							<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-								Previous
-							</Button>
-						)}
-					</div>
+					<FormContent form={form} steps={steps} currentStep={currentStep} />
+					<FormButtons
+						currentStep={currentStep}
+						next={next}
+						prev={prev}
+						steps={steps}
+						receiveAuthorizationKey={receiveAuthorizationKey}
+					/>
 				</div>
 			</div>
 		</div>

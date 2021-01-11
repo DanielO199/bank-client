@@ -1,18 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PlusCircleOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
+
+import { Form, Select } from 'antd';
 
 import { fetchAllBillsAction } from 'actions/billActions';
 import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
-
-// const OptionItem =({bill})=> {
-//   return (<>
-//   <Option value={bill} >Jack</Option>
-//   </>
-//   )
-// }
 
 export const Receiver = () => {
 	const { allBills, imBusy, imWithError } = useSelector(
@@ -25,7 +18,6 @@ export const Receiver = () => {
 	const { Option } = Select;
 
 	const handleChange = (value) => {
-		// dispatch(setBill(value));
 		dispatch(inputChange('receiver', value));
 	};
 
@@ -35,15 +27,25 @@ export const Receiver = () => {
 
 	return (
 		<div>
-			selected Value ={receiver}
-			<Select
-				defaultValue={receiver}
-				style={{ width: 120 }}
-				onChange={handleChange}>
-				{allBills.map((bill) => (
-					<Option value={bill.accountNumber}>{bill.accountNumber}</Option>
-				))}
-			</Select>
+			<Form.Item
+				name="receiver"
+				label="Receiver"
+				rules={[
+					{
+						required: true
+					}
+				]}>
+				<Select
+					defaultValue={receiver}
+					style={{ width: 120 }}
+					onChange={handleChange}>
+					{allBills.map((bill) => (
+						<Option key={bill.accountNumber} value={bill.accountNumber}>
+							{bill.accountNumber}
+						</Option>
+					))}
+				</Select>
+			</Form.Item>
 		</div>
 	);
 };

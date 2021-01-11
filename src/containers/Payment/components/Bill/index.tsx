@@ -42,17 +42,15 @@ export const Bill = () => {
 						required: true
 					}
 				]}>
-				<Input />
+				<Select
+					defaultValue={bill}
+					style={{ width: 120 }}
+					onChange={handleChange}>
+					{userBills.map((bill) => (
+						<Option value={bill.accountNumber}>{bill.accountNumber}</Option>
+					))}
+				</Select>
 			</Form.Item>
-
-			{/* <Select
-				defaultValue={bill}
-				style={{ width: 120 }}
-				onChange={handleChange}>
-				{userBills.map((bill) => (
-					<Option value={bill.accountNumber}>{bill.accountNumber}</Option>
-				))}
-			</Select> */}
 		</div>
 	);
 };
