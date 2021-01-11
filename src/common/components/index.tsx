@@ -10,6 +10,7 @@ export { Input } from './Input';
 export { Layout } from './Layout';
 export { Logo } from './Logo';
 export { Navigation } from './Navigation';
+export { StyledSelect } from './Select/styles';
 export { Sidebar } from './Sidebar';
 export { SideDrawer } from './SideDrawer';
 export { Spinner } from './Spinner';

@@ -1,5 +1,8 @@
-import { Button } from 'antd';
 import { useSelector } from 'react-redux';
+import { Button } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+
+import { StyledFormButtons, StyledButton } from './styles';
 
 import { RootState } from 'stores';
 
@@ -12,11 +15,11 @@ export const FormButtons = ({
 }) => {
 	const { isReceived } = useSelector((state: RootState) => state.transaction);
 	return (
-		<div className="steps-action">
+		<StyledFormButtons>
 			{currentStep < steps.length - 1 && (
-				<Button type="primary" onClick={next}>
-					Next
-				</Button>
+				<StyledButton type="primary" onClick={next}>
+					Next <RightOutlined />
+				</StyledButton>
 			)}
 			{!isReceived && currentStep === steps.length - 1 && (
 				<Button type="primary" onClick={receiveAuthorizationKey}>
@@ -31,10 +34,10 @@ export const FormButtons = ({
 			{isReceived && <input value={'123'} />}
 
 			{!isReceived && currentStep > 0 && (
-				<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-					Previous
-				</Button>
+				<StyledButton type="default" onClick={() => prev()}>
+					<LeftOutlined /> Previous
+				</StyledButton>
 			)}
-		</div>
+		</StyledFormButtons>
 	);
 };

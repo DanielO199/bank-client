@@ -39,7 +39,7 @@ export const columns = [
 		dataIndex: 'createdAt',
 		render: (text) => (
 			<>
-				<StyledName>{text.slice(0, 10)}</StyledName>
+				<span>{text.slice(0, 10)}</span>
 			</>
 		)
 	}

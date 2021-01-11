@@ -3,6 +3,7 @@ import { Form } from 'antd';
 
 import { StyledInput, Wrapper } from './styles';
 
+import { StepName } from 'containers/Payment/styles';
 import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
@@ -16,9 +17,9 @@ export const Money = () => {
 
 	return (
 		<Wrapper>
+			<StepName>Money</StepName>
 			<Form.Item
 				name="money"
-				label="Money"
 				rules={[
 					{
 						required: true

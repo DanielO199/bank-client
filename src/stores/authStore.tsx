@@ -1,3 +1,4 @@
 export const authStore = {
-	accessToken: ''
+	accessToken: '',
+	role:'',
 };

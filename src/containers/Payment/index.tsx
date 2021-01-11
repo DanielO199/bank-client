@@ -15,6 +15,8 @@ import {
 } from 'containers/Payment/components';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { StyledForm, FormWrapper } from './styles';
+
 import { receiveAuthorizationKeyAction } from 'actions/transactionActions';
 
 const steps = [
@@ -86,12 +88,8 @@ export const PaymentContainer = () => {
 		<div>
 			<FormSteps steps={steps} currentStep={currentStep} />
 
-			<div style={{ backgroundColor: 'greenyellow', padding: '15px' }}>
-				<div
-					style={{
-						margin: 'auto',
-						maxWidth: '300px'
-					}}>
+			<StyledForm>
+				<FormWrapper>
 					<FormContent form={form} steps={steps} currentStep={currentStep} />
 					<FormButtons
 						currentStep={currentStep}
@@ -100,8 +98,8 @@ export const PaymentContainer = () => {
 						steps={steps}
 						receiveAuthorizationKey={receiveAuthorizationKey}
 					/>
-				</div>
-			</div>
+				</FormWrapper>
+			</StyledForm>
 		</div>
 	);
 };

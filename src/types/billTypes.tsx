@@ -8,8 +8,6 @@ export const GET_ALL_BILLS_REQUEST = 'GET_ALL_BILLS_REQUEST';
 export const GET_ALL_BILLS_SUCCESS = 'GET_ALL_BILLS_SUCCESS';
 export const GET_ALL_BILLS_ERROR = 'GET_ALL_BILLS_ERROR';
 
-//ZAMIAST FETCH TO GET
-
 export interface IBillStore {
 	imBusy?: boolean;
 	imWithError?: boolean;

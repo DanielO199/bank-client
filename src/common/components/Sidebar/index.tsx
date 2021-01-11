@@ -28,6 +28,7 @@ export const Sidebar = ({ children }) => {
 			<StyledLayout className="site-layout">
 				<Header toggle={toggle} isCollapsedSidebar={isCollapsedSidebar} />
 				<Content>{children}</Content>
+				{/* <Footer/> */}
 			</StyledLayout>
 		</StyledLayout>
 	);

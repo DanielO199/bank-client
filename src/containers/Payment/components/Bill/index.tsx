@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { Select, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 
+import { StyledSelect } from 'common/components';
 import { fetchUserBillsAction } from 'actions/billActions';
 import { inputChange } from 'actions/paymentActions';
+import { StepName } from 'containers/Payment/styles';
 import { RootState } from 'stores';
 
 export const Bill = () => {
@@ -13,7 +15,7 @@ export const Bill = () => {
 	const { bill } = useSelector((state: RootState) => state.payment);
 	const dispatch = useDispatch();
 
-	const { Option } = Select;
+	// const { Option } = Select;
 
 	const handleChange = (value) => {
 		dispatch(inputChange('bill', value));
@@ -25,24 +27,23 @@ export const Bill = () => {
 
 	return (
 		<div>
+			<StepName>Bill</StepName>
 			<Form.Item
 				name="bill"
-				label="Bill"
 				rules={[
 					{
 						required: true
 					}
 				]}>
-				<Select
-					defaultValue={bill}
-					style={{ width: 120 }}
-					onChange={handleChange}>
+				<StyledSelect defaultValue={bill} onChange={handleChange}>
 					{userBills.map((bill) => (
-						<Option key={bill.accountNumber} value={bill.accountNumber}>
+						<StyledSelect.Option
+							key={bill.accountNumber}
+							value={bill.accountNumber}>
 							{bill.accountNumber}
-						</Option>
+						</StyledSelect.Option>
 					))}
-				</Select>
+				</StyledSelect>
 			</Form.Item>
 		</div>
 	);

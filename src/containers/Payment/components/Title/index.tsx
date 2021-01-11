@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from 'antd';
 
+import { StepName } from 'containers/Payment/styles';
 import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
@@ -14,9 +15,9 @@ export const Title = () => {
 
 	return (
 		<div>
+			<StepName>Title</StepName>
 			<Form.Item
 				name="title"
-				label="Title"
 				rules={[
 					{
 						required: true

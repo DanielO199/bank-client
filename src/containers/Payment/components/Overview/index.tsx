@@ -22,26 +22,11 @@ export const Overview = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<Card title="Transaction overview">
-			{/* <OverviewHeader /> */}
-			{/* <OverviewDetails> */}
+		<Card style={{ textAlign: 'center' }} title="Transaction overview">
 			<CardItem>{receiver}</CardItem>
 			<CardItem>{bill}</CardItem>
 			<CardItem>{money}</CardItem>
 			<CardItem>{title}</CardItem>
-			{/* <div>
-					<span>{receiver}</span>
-				</div>
-				<div>
-					<span>{bill}</span>
-				</div>
-				<div>
-					<span>{money}</span>
-				</div>
-				<div>
-					<span>{title}</span>
-				</div> */}
-			{/* </OverviewDetails> */}
 		</Card>
 	);
 };
