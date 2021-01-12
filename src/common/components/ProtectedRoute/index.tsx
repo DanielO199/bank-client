@@ -1,16 +1,16 @@
 import { Redirect } from 'react-router-dom';
 
-import { authStore } from 'stores/authStore';
+import { IsLogged } from 'utils';
 
 export default function ProtectedRoute(Children) {
 	return (props) => (
 		<div className="authComponent full-height">
-			{authStore.accessToken ? (
+			{IsLogged() ? (
 				<Children {...props} />
 			) : (
 				<Redirect
 					to={{
-						pathname: '/customer/login',
+						pathname: '/login',
 						state: { from: props.location }
 					}}
 				/>

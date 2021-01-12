@@ -8,7 +8,7 @@ export const authRoutes = [
 	{
 		path: '/dashboard',
 		name: 'User Dashboard',
-		component: DashboardPage
+		component: ProtectedRoute(DashboardPage)
 	},
 	{
 		path: '/payments',

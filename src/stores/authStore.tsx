@@ -1,4 +1,8 @@
 export const authStore = {
-	accessToken: '',
-	role:'',
+	imBusy: false,
+	isLogged: false,
+	user: {
+		userId: '',
+		token: ''
+	}
 };

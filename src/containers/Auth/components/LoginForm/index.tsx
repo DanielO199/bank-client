@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { RootState } from 'stores';
 
+import { loginAction } from 'actions/authActions';
+
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { FormWrapper, StyledButton, StyledForm } from 'containers/Auth/styles';
 import { Form, Input } from 'antd';
@@ -12,6 +14,7 @@ export const LoginForm = ({ toggleMode }) => {
 
 	const onFinish = (values) => {
 		console.log(values);
+		dispatch(loginAction(values));
 	};
 
 	return (

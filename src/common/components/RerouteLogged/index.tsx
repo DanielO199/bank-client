@@ -2,19 +2,21 @@ import { Redirect } from 'react-router-dom';
 
 import { authStore } from 'stores/authStore';
 
+import { IsLogged } from 'utils';
+
 export default function RerouteLogged(Children) {
 	return (props) => (
-		<div className="authComponent full-height">
-			{authStore.accessToken ? (
+		<>
+			{IsLogged() ? (
 				<Redirect
 					to={{
-						pathname: '/admin/reports',
+						pathname: '/dashboard',
 						state: { from: props.location }
 					}}
 				/>
 			) : (
 				<Children {...props} />
 			)}
-		</div>
+		</>
 	);
 }

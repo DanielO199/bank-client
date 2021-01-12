@@ -2,8 +2,18 @@ import { IPagination } from 'common/interfaces';
 import { createBrowserHistory } from 'history';
 import querystring from 'query-string';
 
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import { RootState } from 'stores';
+
 export const formatBill = (bill) => {
 	return bill.match(/.{1,4}/g).join(' ');
+};
+
+export const IsLogged = () => {
+	const { isLogged } = useSelector((state: RootState) => state.auth);
+	return isLogged;
 };
 
 export const getParameterByName = (name, findIn = window.location.href) => {

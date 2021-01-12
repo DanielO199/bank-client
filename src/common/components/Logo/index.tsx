@@ -1,6 +1,11 @@
 import { StyledLogo } from './styles';
 
-export const Logo = ({ height, border }) => {
+interface ILogo {
+	height?: string;
+	border?: string;
+}
+
+export const Logo = ({ height, border }: ILogo) => {
 	return (
 		<StyledLogo height={height} border={border}>
 			<svg width="200" height={`${height}`} viewBox="0 0 374 388">
