@@ -1,9 +1,9 @@
 import { StyledLogo } from './styles';
 
-export const Logo = () => {
+export const Logo = ({ height, border }) => {
 	return (
-		<StyledLogo>
-			<svg width="200" height="63" viewBox="0 0 374 388">
+		<StyledLogo height={height} border={border}>
+			<svg width="200" height={`${height}`} viewBox="0 0 374 388">
 				<defs>
 					<linearGradient
 						id="linear-gradient"
