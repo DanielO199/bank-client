@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Input } from 'antd';
 
 export const Wrapper = styled.div`
 	/* Chrome, Safari, Edge, Opera */
@@ -14,5 +13,3 @@ export const Wrapper = styled.div`
 		-moz-appearance: textfield;
 	}
 `;
-
-export const StyledInput = styled(Input)``;

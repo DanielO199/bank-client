@@ -85,7 +85,7 @@ export const PaymentContainer = () => {
 	};
 
 	return (
-		<div>
+		<>
 			<FormSteps steps={steps} currentStep={currentStep} />
 
 			<StyledForm>
@@ -100,6 +100,6 @@ export const PaymentContainer = () => {
 					/>
 				</FormWrapper>
 			</StyledForm>
-		</div>
+		</>
 	);
 };

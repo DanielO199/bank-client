@@ -24,6 +24,7 @@ export const Title = () => {
 					}
 				]}>
 				<Input
+					autoComplete="off"
 					value={title}
 					onChange={(e) => handleChange(e.target.value)}
 					placeholder="Type a title"

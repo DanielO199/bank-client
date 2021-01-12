@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
-import { StyledInput, Wrapper } from './styles';
+import { Wrapper } from './styles';
 
 import { StepName } from 'containers/Payment/styles';
 import { inputChange } from 'actions/paymentActions';
@@ -25,7 +25,8 @@ export const Money = () => {
 						required: true
 					}
 				]}>
-				<StyledInput
+				<Input
+					autoComplete="off"
 					value={money}
 					onChange={(e) => handleChange(e.target.value)}
 					placeholder="Input a number"
