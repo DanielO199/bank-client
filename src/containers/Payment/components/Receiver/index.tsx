@@ -32,7 +32,8 @@ export const Receiver = () => {
 				name="receiver"
 				rules={[
 					{
-						required: true
+						required: true,
+						message: 'This field is required'
 					}
 				]}>
 				<StyledSelect defaultValue={receiver} onChange={handleChange}>

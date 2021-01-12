@@ -32,7 +32,8 @@ export const Bill = () => {
 				name="bill"
 				rules={[
 					{
-						required: true
+						required: true,
+						message: 'This field is required'
 					}
 				]}>
 				<StyledSelect defaultValue={bill} onChange={handleChange}>

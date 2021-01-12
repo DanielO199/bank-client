@@ -20,7 +20,8 @@ export const Title = () => {
 				name="title"
 				rules={[
 					{
-						required: true
+						required: true,
+						message: 'This field is required'
 					}
 				]}>
 				<Input

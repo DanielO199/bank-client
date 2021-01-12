@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input } from 'antd';
+import { Input, Form } from 'antd';
 
 import { Wrapper } from './styles';
 
@@ -22,7 +22,8 @@ export const Money = () => {
 				name="money"
 				rules={[
 					{
-						required: true
+						required: true,
+						message: 'This field is required'
 					}
 				]}>
 				<Input
