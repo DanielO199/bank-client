@@ -8,7 +8,9 @@ import { LineChart, Line } from 'recharts';
 import { primaryColor } from 'common/globals/theme';
 
 export const AvailableFunds = () => {
-	const { funds, imBusy } = useSelector((state: RootState) => state.fund);
+	const { funds, fundsData, imBusy } = useSelector(
+		(state: RootState) => state.fund
+	);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -33,7 +35,7 @@ export const AvailableFunds = () => {
 				<p>Available Funds</p>
 				<h2>{funds} PLN</h2>
 			</div>
-			<LineChart margin={{ top: 30 }} width={120} height={100} data={data}>
+			<LineChart margin={{ top: 30 }} width={120} height={100} data={fundsData}>
 				<Line
 					type="monotone"
 					dataKey="money"

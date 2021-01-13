@@ -4,5 +4,6 @@ export const fundStore = {
 	errorMsg: '',
 	funds: 0,
 	savings: 0,
-	savingsData: []
+	savingsData: [],
+	fundsData: []
 };

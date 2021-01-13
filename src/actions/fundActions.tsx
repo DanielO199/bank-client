@@ -13,7 +13,7 @@ export const fetchAvailableFundsAction = () => async (dispatch) => {
 	try {
 		dispatch({ type: GET_FUNDS_REQUEST });
 		const responseData = await fundApi.getFunds();
-		dispatch({ type: GET_FUNDS_SUCCESS, payload: responseData.funds });
+		dispatch({ type: GET_FUNDS_SUCCESS, payload: responseData });
 	} catch (error) {
 		dispatch({ type: GET_FUNDS_ERROR });
 	}
@@ -24,7 +24,7 @@ export const fetchSavingsAction = () => async (dispatch) => {
 		dispatch({ type: GET_SAVINGS_REQUEST });
 		const responseData = await fundApi.getSavings();
 		console.log(responseData);
-		dispatch({ type: GET_SAVINGS_SUCCESS, payload: responseData.savingsData });
+		dispatch({ type: GET_SAVINGS_SUCCESS, payload: responseData });
 	} catch (error) {
 		dispatch({ type: GET_SAVINGS_ERROR });
 	}

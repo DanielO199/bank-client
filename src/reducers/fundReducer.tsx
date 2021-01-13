@@ -21,8 +21,10 @@ const fundReducer = (state = fundStore, action) => {
 			return {
 				...state,
 				imBusy: false,
-				funds: action.payload
+				fundsData: action.payload.fundsData,
+				funds: action.payload.funds
 			};
+
 		case GET_FUNDS_ERROR:
 			return {
 				...state,
@@ -41,8 +43,10 @@ const fundReducer = (state = fundStore, action) => {
 			return {
 				...state,
 				imBusy: false,
-				savingsData: action.payload
+				savingsData: action.payload.savingsData,
+				savings: action.payload.savings
 			};
+
 		case GET_SAVINGS_ERROR:
 			return {
 				...state,
