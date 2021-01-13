@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import debounce from 'lodash/debounce';
 import { Form } from 'antd';
 
 import { StyledSelect } from 'common/components';
@@ -15,14 +15,23 @@ export const Receiver = () => {
 	const { receiver } = useSelector((state: RootState) => state.payment);
 	const dispatch = useDispatch();
 
+	const handleSearch = (value) => {
+		if (value) {
+			dispatch(fetchAllBillsAction());
+		}
+	};
+
+	const debouncedOnSearch = useCallback(debounce(handleSearch, 500), []);
+
 	const handleChange = (value) => {
 		dispatch(inputChange('receiver', value));
 	};
 
-	useEffect(() => {
-		dispatch(fetchAllBillsAction());
-	}, []);
-
+	const options = allBills.map((item) => (
+		<StyledSelect.Option value={item.accountNumber} key={item.accountNumber}>
+			{item.accountNumber}
+		</StyledSelect.Option>
+	));
 	return (
 		<div>
 			<StepName>Receiver</StepName>
@@ -34,14 +43,17 @@ export const Receiver = () => {
 						message: 'This field is required'
 					}
 				]}>
-				<StyledSelect defaultValue={receiver} onChange={handleChange}>
-					{allBills.map((bill) => (
-						<StyledSelect.Option
-							key={bill.accountNumber}
-							value={bill.accountNumber}>
-							{bill.accountNumber}
-						</StyledSelect.Option>
-					))}
+				<StyledSelect
+					showSearch
+					value={receiver}
+					placeholder="Type to search"
+					defaultActiveFirstOption={false}
+					showArrow={false}
+					filterOption={false}
+					onSearch={debouncedOnSearch}
+					onChange={handleChange}
+					notFoundContent={<div>No bill found</div>}>
+					{options}
 				</StyledSelect>
 			</Form.Item>
 		</div>

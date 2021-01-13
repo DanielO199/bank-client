@@ -20,8 +20,6 @@ export const Savings = () => {
 		dispatch(fetchSavingsAction());
 	}, []);
 
-	console.log(savingsData, savings);
-
 	if (imBusy)
 		return (
 			<Wrapper justifyContent="center">

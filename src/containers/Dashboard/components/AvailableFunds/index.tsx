@@ -17,12 +17,6 @@ export const AvailableFunds = () => {
 		dispatch(fetchAvailableFundsAction());
 	}, []);
 
-	const data = [
-		{ date: 'data utworzenia konta', money: 4000 },
-		{ date: 'July', money: 3000 },
-		{ date: 'August', money: 6000 }
-	];
-
 	if (imBusy)
 		return (
 			<Wrapper justifyContent="center">

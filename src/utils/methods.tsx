@@ -1,9 +1,6 @@
-import { IPagination } from 'common/interfaces';
-import { createBrowserHistory } from 'history';
-import querystring from 'query-string';
-
 import { useSelector } from 'react-redux';
 
+import { IPagination } from 'common/interfaces';
 import { RootState } from 'stores';
 
 export const formatBill = (bill) => {
@@ -38,19 +35,4 @@ export const paginate = (
 		prevPage: page > 1 ? page - 1 : page,
 		firstPage: 1
 	};
-};
-
-export const updateURLWithQueryParams = (params) => {
-	let history = createBrowserHistory();
-	let pathname = window.location.hash;
-
-	const queryParamStartIndex = window.location.hash.indexOf('?');
-	if (queryParamStartIndex !== -1) {
-		pathname = `${window.location.hash.substr(0, queryParamStartIndex)}`;
-	}
-
-	history.push({
-		pathname: `/${pathname}`,
-		search: `?${querystring.stringify(params)}`
-	});
 };

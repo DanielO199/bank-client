@@ -12,10 +12,10 @@ const TransactionItem = ({ item }) => {
 		<CardItem>
 			<div>
 				{item.title}
-				<div>{item.receiverName}</div>
+				<StyledName>{item.senderName}</StyledName>
 			</div>
 			<StyledColumn>
-				<StyledName>{item.createdAt.slice(0, 10)}</StyledName>
+				<div>{item.createdAt.slice(0, 10)}</div>
 				{item.money} PLN
 			</StyledColumn>
 		</CardItem>
