@@ -20,8 +20,9 @@ export const loginAction = (data) => async (dispatch) => {
 		});
 		const content = await rawResponse.json();
 
-		localStorage.setItem('accessToken', content.user.token);
-		dispatch({ type: LOGIN_SUCCESS, payload: content.user });
+		localStorage.setItem('accessToken', content.token);
+		localStorage.setItem('userId', content.userId);
+		dispatch({ type: LOGIN_SUCCESS, payload: content });
 	} catch (error) {}
 };
 
@@ -34,9 +35,8 @@ export const isLoggedAction = () => {
 export const registerAction = () => async (dispatch) => {
 	console.log('1');
 	try {
-		dispatch({ type: REGISTER_REQUEST });
-		const responseData = await billApi.getUserBills();
-
-		dispatch({ type: REGISTER_SUCCESS, payload: responseData.bills });
+		// dispatch({ type: REGISTER_REQUEST });
+		// const responseData = await billApi.getUserBills();
+		// dispatch({ type: REGISTER_SUCCESS, payload: responseData.bills });
 	} catch (error) {}
 };

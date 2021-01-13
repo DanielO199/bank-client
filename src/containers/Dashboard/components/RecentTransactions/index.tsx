@@ -29,7 +29,7 @@ export const RecentTransactions = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchTransactionsAction());
+		dispatch(fetchTransactionsAction({ pageSize: 3 }));
 	}, []);
 
 	if (imBusy)

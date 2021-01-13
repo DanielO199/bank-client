@@ -44,12 +44,13 @@ const steps = [
 
 export const PaymentContainer = () => {
 	const dispatch = useDispatch();
-	const userId = '5ff38276fd149e22c08c6f27';
+
+	const { currentStep } = useSelector((state: RootState) => state.payment);
+	const { userId } = useSelector((state: RootState) => state.auth);
+
 	const receiveAuthorizationKey = () => {
 		dispatch(receiveAuthorizationKeyAction(userId));
 	};
-
-	const { currentStep } = useSelector((state: RootState) => state.payment);
 
 	const [form] = Form.useForm();
 

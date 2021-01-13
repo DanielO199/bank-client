@@ -29,18 +29,15 @@ const BillItem = ({ item }) => {
 
 export const Bills = () => {
 	const [isModalOpen, setModalIsOpen] = useState(false);
-	const { userBills, imBusy, imWithError } = useSelector(
-		(state: RootState) => state.bill
-	);
+	const { userId } = useSelector((state: RootState) => state.auth);
+	const { userBills, imBusy } = useSelector((state: RootState) => state.bill);
 	const dispatch = useDispatch();
 
 	const showModal = () => setModalIsOpen(true);
 	const closeModal = () => setModalIsOpen(false);
 
-	const creatorId = '5ff38276fd149e22c08c6f27';
-
 	const handleSubmit = async () => {
-		dispatch(createNewBillAction(creatorId));
+		dispatch(createNewBillAction(userId));
 
 		closeModal();
 	};

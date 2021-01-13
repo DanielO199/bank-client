@@ -7,12 +7,13 @@ import {
 	GET_SAVINGS_ERROR
 } from 'types/fundTypes';
 
+import { getUserId } from 'utils';
 import { fundApi } from 'api';
 
 export const fetchAvailableFundsAction = () => async (dispatch) => {
 	try {
 		dispatch({ type: GET_FUNDS_REQUEST });
-		const responseData = await fundApi.getFunds();
+		const responseData = await fundApi.getFunds(getUserId());
 		dispatch({ type: GET_FUNDS_SUCCESS, payload: responseData });
 	} catch (error) {
 		dispatch({ type: GET_FUNDS_ERROR });
@@ -22,7 +23,7 @@ export const fetchAvailableFundsAction = () => async (dispatch) => {
 export const fetchSavingsAction = () => async (dispatch) => {
 	try {
 		dispatch({ type: GET_SAVINGS_REQUEST });
-		const responseData = await fundApi.getSavings();
+		const responseData = await fundApi.getSavings(getUserId());
 		console.log(responseData);
 		dispatch({ type: GET_SAVINGS_SUCCESS, payload: responseData });
 	} catch (error) {

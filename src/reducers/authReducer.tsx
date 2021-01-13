@@ -25,7 +25,8 @@ const authReducer = (state = authStore, action) => {
 				...state,
 				imBusyAction: false,
 				isLogged: true,
-				user: action.payload
+				userId: action.payload.userId,
+				accessToken: action.payload.token
 			};
 
 		case REGISTER_REQUEST:

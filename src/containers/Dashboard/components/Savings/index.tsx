@@ -14,11 +14,13 @@ export const Savings = () => {
 	);
 	const dispatch = useDispatch();
 
-	const COLORS = [`${primaryColor}`, '#c40000'];
+	const COLORS = ['#c40000', `${primaryColor}`];
 
 	useEffect(() => {
 		dispatch(fetchSavingsAction());
 	}, []);
+
+	console.log(savingsData, savings);
 
 	if (imBusy)
 		return (

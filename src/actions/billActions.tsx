@@ -10,6 +10,7 @@ import {
 } from 'types/billTypes';
 import { IBillStore } from 'types/billTypes';
 
+import { getUserId } from 'utils';
 import { billApi } from 'api/billApi';
 
 export const createNewBillAction = (creatorId: string) => async (dispatch) => {
@@ -21,7 +22,7 @@ export const createNewBillAction = (creatorId: string) => async (dispatch) => {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ creatorId: '5ff38276fd149e22c08c6f27' })
+			body: JSON.stringify({ creatorId: getUserId() })
 		});
 		const content = await rawResponse.json();
 
@@ -35,7 +36,7 @@ export const fetchUserBillsAction = () => async (dispatch) => {
 	console.log('1');
 	try {
 		dispatch({ type: GET_USER_BILLS_REQUEST });
-		const responseData = await billApi.getUserBills();
+		const responseData = await billApi.getUserBills(getUserId());
 
 		dispatch({ type: GET_USER_BILLS_SUCCESS, payload: responseData.bills });
 	} catch (error) {

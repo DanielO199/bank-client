@@ -10,9 +10,7 @@ import { inputChange } from 'actions/paymentActions';
 import { RootState } from 'stores';
 
 export const Receiver = () => {
-	const { allBills, imBusy, imWithError } = useSelector(
-		(state: RootState) => state.bill
-	);
+	const { allBills } = useSelector((state: RootState) => state.bill);
 
 	const { receiver } = useSelector((state: RootState) => state.payment);
 	const dispatch = useDispatch();

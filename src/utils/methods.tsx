@@ -3,7 +3,6 @@ import { createBrowserHistory } from 'history';
 import querystring from 'query-string';
 
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import { RootState } from 'stores';
 
@@ -14,6 +13,11 @@ export const formatBill = (bill) => {
 export const IsLogged = () => {
 	const { isLogged } = useSelector((state: RootState) => state.auth);
 	return isLogged;
+};
+
+export const getUserId = () => {
+	const userId = localStorage.getItem('userId');
+	return userId;
 };
 
 export const getParameterByName = (name, findIn = window.location.href) => {
