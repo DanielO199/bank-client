@@ -17,7 +17,7 @@ const OverviewHeader = () => {
 
 export const Overview = () => {
 	const { receiver, bill, money, title } = useSelector(
-		(state: RootState) => state.payment
+		(state: RootState) => state.step
 	);
 	// const dispatch = useDispatch();
 

@@ -15,7 +15,8 @@ const transactionReducer = (state = transactionStore, action) => {
 		case RECEIVE_AUTHORIZATION_KEY_REQUEST:
 			return {
 				...state,
-				imBusy: true
+				imBusy: true,
+				transactionCreated: false
 			};
 
 		case RECEIVE_AUTHORIZATION_KEY_SUCCESS:
@@ -29,6 +30,14 @@ const transactionReducer = (state = transactionStore, action) => {
 			return {
 				...state,
 				imBusy: true
+			};
+
+		case CREATE_TRANSACTION_SUCCESS:
+			return {
+				...state,
+				imBusy: false,
+				isReceived: false,
+				transactionCreated: true
 			};
 
 		case GET_TRANSACTIONS_REQUEST:

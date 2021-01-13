@@ -6,13 +6,13 @@ import { Form } from 'antd';
 import { StyledSelect } from 'common/components';
 import { StepName } from 'containers/Payment/styles';
 import { fetchAllBillsAction } from 'actions/billActions';
-import { inputChange } from 'actions/paymentActions';
+import { inputChange } from 'actions/stepActions';
 import { RootState } from 'stores';
 
 export const Receiver = () => {
 	const { allBills } = useSelector((state: RootState) => state.bill);
 
-	const { receiver } = useSelector((state: RootState) => state.payment);
+	const { receiver } = useSelector((state: RootState) => state.step);
 	const dispatch = useDispatch();
 
 	const handleSearch = (value) => {

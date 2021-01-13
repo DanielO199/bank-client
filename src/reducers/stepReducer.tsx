@@ -1,8 +1,8 @@
-import { NEXT_STEP, PREVIOUS_STEP, INPUT_CHANGE } from 'types/paymentTypes';
+import { NEXT_STEP, PREVIOUS_STEP, INPUT_CHANGE } from 'types/stepTypes';
 
-import { paymentStore } from 'stores/paymentStore';
+import { stepStore } from 'stores/stepStore';
 
-const paymentReducer = (state = paymentStore, action) => {
+const stepReducer = (state = stepStore, action) => {
 	switch (action.type) {
 		case NEXT_STEP:
 			return {
@@ -22,9 +22,12 @@ const paymentReducer = (state = paymentStore, action) => {
 				[action.input]: action.value
 			};
 
+		case 'RESET':
+			return stepStore;
+
 		default:
 			return { ...state };
 	}
 };
 
-export default paymentReducer;
+export default stepReducer;

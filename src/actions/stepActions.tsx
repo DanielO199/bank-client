@@ -1,4 +1,4 @@
-import { NEXT_STEP, PREVIOUS_STEP } from 'types/paymentTypes';
+import { NEXT_STEP, PREVIOUS_STEP } from 'types/stepTypes';
 
 export const nextStep = () => {
 	return {

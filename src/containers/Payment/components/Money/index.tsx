@@ -4,11 +4,11 @@ import { Input, Form } from 'antd';
 import { Wrapper } from './styles';
 
 import { StepName } from 'containers/Payment/styles';
-import { inputChange } from 'actions/paymentActions';
+import { inputChange } from 'actions/stepActions';
 import { RootState } from 'stores';
 
 export const Money = () => {
-	const { money } = useSelector((state: RootState) => state.payment);
+	const { money } = useSelector((state: RootState) => state.step);
 	const dispatch = useDispatch();
 
 	const handleChange = (value) => {

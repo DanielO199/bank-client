@@ -1,4 +1,4 @@
-export const paymentStore = {
+export const stepStore = {
 	bill: '',
 	receiver: '',
 	money: '',

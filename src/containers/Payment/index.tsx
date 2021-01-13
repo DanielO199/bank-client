@@ -1,7 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'antd';
 
 import { RootState } from 'stores';
-import { nextStep, prevStep } from 'actions/paymentActions';
+import { nextStep, prevStep } from 'actions/stepActions';
 
 import { FormSteps } from 'common/components';
 import {
@@ -13,11 +14,14 @@ import {
 	Receiver,
 	Title
 } from 'containers/Payment/components';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { StyledForm, FormWrapper } from './styles';
 
-import { receiveAuthorizationKeyAction } from 'actions/transactionActions';
+import {
+	receiveAuthorizationKeyAction,
+	createNewTransactionAction
+} from 'actions/transactionActions';
+import { useHistory } from 'react-router-dom';
 
 const steps = [
 	{
@@ -45,11 +49,39 @@ const steps = [
 export const PaymentContainer = () => {
 	const dispatch = useDispatch();
 
-	const { currentStep } = useSelector((state: RootState) => state.payment);
-	const { userId } = useSelector((state: RootState) => state.auth);
+	const history = useHistory();
+
+	const { currentStep, bill, receiver, money, title } = useSelector(
+		(state: RootState) => state.step
+	);
+
+	const navigateToDashboard = () => {
+		history.push('/dashboard');
+	};
 
 	const receiveAuthorizationKey = () => {
-		dispatch(receiveAuthorizationKeyAction(userId));
+		dispatch(
+			receiveAuthorizationKeyAction({
+				senderAccountNumber: bill,
+				receiverAccountNumber: receiver,
+				money
+			})
+		);
+	};
+
+	const confirmTransaction = (receivedKey) => {
+		dispatch(
+			createNewTransactionAction(
+				{
+					senderAccountNumber: bill,
+					receiverAccountNumber: receiver,
+					authorizationKey: receivedKey,
+					title,
+					money
+				},
+				navigateToDashboard
+			)
+		);
 	};
 
 	const [form] = Form.useForm();
@@ -98,6 +130,7 @@ export const PaymentContainer = () => {
 						prev={prev}
 						steps={steps}
 						receiveAuthorizationKey={receiveAuthorizationKey}
+						confirmTransaction={confirmTransaction}
 					/>
 				</FormWrapper>
 			</StyledForm>

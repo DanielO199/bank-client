@@ -4,6 +4,7 @@ export const transactionStore = {
 	errorMsg: '',
 	transactions: [],
 	isReceived: false,
+	transactionCreated: false,
 	pagination: {
 		current: 1,
 		pageSize: 1,

@@ -5,14 +5,14 @@ import { Form, Input } from 'antd';
 
 import { StyledSelect } from 'common/components';
 import { fetchUserBillsAction } from 'actions/billActions';
-import { inputChange } from 'actions/paymentActions';
+import { inputChange } from 'actions/stepActions';
 import { StepName } from 'containers/Payment/styles';
 import { RootState } from 'stores';
 
 export const Bill = () => {
 	const { userBills } = useSelector((state: RootState) => state.bill);
 
-	const { bill } = useSelector((state: RootState) => state.payment);
+	const { bill } = useSelector((state: RootState) => state.step);
 	const dispatch = useDispatch();
 
 	// const { Option } = Select;
