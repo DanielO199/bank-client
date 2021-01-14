@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Form } from 'antd';
 
 import { RootState } from 'stores';
 import { nextStep, prevStep } from 'actions/stepActions';
-
 import { FormSteps } from 'common/components';
 import {
 	Bill,
@@ -14,14 +14,12 @@ import {
 	Receiver,
 	Title
 } from 'containers/Payment/components';
-
-import { StyledForm, FormWrapper } from './styles';
-
 import {
 	receiveAuthorizationKeyAction,
 	createNewTransactionAction
 } from 'actions/transactionActions';
-import { useHistory } from 'react-router-dom';
+
+import { StyledForm, FormWrapper } from './styles';
 
 const steps = [
 	{
@@ -48,12 +46,11 @@ const steps = [
 
 export const PaymentContainer = () => {
 	const dispatch = useDispatch();
-
 	const history = useHistory();
-
 	const { currentStep, bill, receiver, money, title } = useSelector(
 		(state: RootState) => state.step
 	);
+	const [form] = Form.useForm();
 
 	const navigateToDashboard = () => {
 		history.push('/dashboard');
@@ -83,8 +80,6 @@ export const PaymentContainer = () => {
 			)
 		);
 	};
-
-	const [form] = Form.useForm();
 
 	const next = async () => {
 		try {

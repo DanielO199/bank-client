@@ -23,7 +23,7 @@ const TransactionItem = ({ item }) => {
 };
 
 export const RecentTransactions = () => {
-	const { transactions, imBusy, imWithError } = useSelector(
+	const { transactions, imBusy } = useSelector(
 		(state: RootState) => state.transaction
 	);
 	const dispatch = useDispatch();
@@ -38,6 +38,7 @@ export const RecentTransactions = () => {
 				<Spinner />
 			</Wrapper>
 		);
+
 	return (
 		<Wrapper>
 			<Card title="Recent transactions">

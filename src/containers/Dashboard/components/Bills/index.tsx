@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PlusCircleOutlined } from '@ant-design/icons';
 
+import { RootState } from 'stores';
 import { fetchUserBillsAction, createNewBillAction } from 'actions/billActions';
 import { CreateBillModal } from 'containers/Dashboard/components';
 import { formatBill } from 'utils';
 import { Spinner, Card, CardItem } from 'common/components';
-import { RootState } from 'stores';
 import { Wrapper, StyledSpan, StyledItem } from './styles';
 
 const NewBillIcon = ({ showModal }) => {
@@ -29,7 +29,6 @@ const BillItem = ({ item }) => {
 
 export const Bills = () => {
 	const [isModalOpen, setModalIsOpen] = useState(false);
-	const { userId } = useSelector((state: RootState) => state.auth);
 	const { userBills, imBusy } = useSelector((state: RootState) => state.bill);
 	const dispatch = useDispatch();
 
@@ -37,7 +36,7 @@ export const Bills = () => {
 	const closeModal = () => setModalIsOpen(false);
 
 	const handleSubmit = async () => {
-		dispatch(createNewBillAction(userId));
+		dispatch(createNewBillAction);
 
 		closeModal();
 	};
@@ -52,6 +51,7 @@ export const Bills = () => {
 				<Spinner />
 			</Wrapper>
 		);
+
 	return (
 		<Wrapper>
 			<CreateBillModal

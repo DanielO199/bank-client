@@ -13,16 +13,16 @@ export const authRoutes = [
 	{
 		path: '/payments',
 		name: 'Create Payment',
-		component: PaymentPage
+		component: ProtectedRoute(PaymentPage)
 	},
 	{
 		path: '/history',
 		name: 'User History Payments',
-		component: HistoryPage
+		component: ProtectedRoute(HistoryPage)
 	},
 	{
 		path: '/settings',
 		name: 'User Settings',
-		component: SettingsPage
+		component: ProtectedRoute(SettingsPage)
 	}
 ];

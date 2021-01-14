@@ -1,21 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PlusCircleOutlined } from '@ant-design/icons';
-import { Form, Input } from 'antd';
+import { Form } from 'antd';
 
+import { RootState } from 'stores';
 import { StyledSelect } from 'common/components';
 import { fetchUserBillsAction } from 'actions/billActions';
 import { inputChange } from 'actions/stepActions';
 import { StepName } from 'containers/Payment/styles';
-import { RootState } from 'stores';
 
 export const Bill = () => {
 	const { userBills } = useSelector((state: RootState) => state.bill);
-
 	const { bill } = useSelector((state: RootState) => state.step);
 	const dispatch = useDispatch();
-
-	// const { Option } = Select;
 
 	const handleChange = (value) => {
 		dispatch(inputChange('bill', value));

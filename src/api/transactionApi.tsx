@@ -1,5 +1,5 @@
 import { api } from 'utils/api';
-const userId = '5ff38276fd149e22c08c6f27';
+
 export const transactionApi = {
 	list: function (id, params?) {
 		return api.get(`/transactions/${id}`, params);

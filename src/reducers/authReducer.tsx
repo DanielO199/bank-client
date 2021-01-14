@@ -1,15 +1,16 @@
 import {
+	IS_LOGGED,
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
 	REGISTER_REQUEST,
 	REGISTER_SUCCESS
 } from 'types/authTypes';
 
-import { authStore } from 'stores/authStore';
+import { initialAuthStore } from 'stores/authStore';
 
-const authReducer = (state = authStore, action) => {
+const authReducer = (state = initialAuthStore, action) => {
 	switch (action.type) {
-		case 'IS_LOGGED':
+		case IS_LOGGED:
 			return {
 				isLogged: true
 			};

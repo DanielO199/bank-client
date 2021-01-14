@@ -9,9 +9,12 @@ export const GET_ALL_BILLS_SUCCESS = 'GET_ALL_BILLS_SUCCESS';
 export const GET_ALL_BILLS_ERROR = 'GET_ALL_BILLS_ERROR';
 
 export interface IBillStore {
-	imBusy?: boolean;
-	imWithError?: boolean;
-	errorMsg?: string;
+	imBusy: boolean;
+	imBusyAction: boolean;
+	imWithError: boolean;
+	errorMsg: string;
+	userBills: [];
+	allBills: [];
 }
 
 export interface IBill {
@@ -20,9 +23,3 @@ export interface IBill {
 	name: string;
 	money: number;
 }
-
-export type BillActionTypes = {
-	type?: string;
-	bill?: IBillStore;
-	payload: IBill[];
-};

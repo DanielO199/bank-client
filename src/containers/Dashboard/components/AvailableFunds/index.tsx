@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { LineChart, Line } from 'recharts';
+
+import { RootState } from 'stores';
 import { fetchAvailableFundsAction } from 'actions/fundActions';
 import { Spinner } from 'common/components';
-import { RootState } from 'stores';
-import { Wrapper } from './styles';
-import { LineChart, Line } from 'recharts';
 import { primaryColor } from 'common/globals/theme';
+import { Wrapper } from './styles';
 
 export const AvailableFunds = () => {
 	const { funds, fundsData, imBusy } = useSelector(

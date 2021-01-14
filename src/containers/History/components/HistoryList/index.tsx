@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchTransactionsAction } from 'actions/transactionActions';
-
-import { Table } from 'common/components';
-
 import { RootState } from 'stores';
+import { fetchTransactionsAction } from 'actions/transactionActions';
+import { Table } from 'common/components';
 import { columns } from './columns';
 
 export const HistoryList = () => {

@@ -1,7 +1,7 @@
-export const fundStore = {
+import { IFundStore } from 'types/fundTypes';
+
+export const initialFundStore: IFundStore = {
 	imBusy: false,
-	imWithError: false,
-	errorMsg: '',
 	funds: 0,
 	savings: 0,
 	savingsData: [],

@@ -1,11 +1,10 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Input } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
-import { StyledFormButtons, StyledButton } from './styles';
-
 import { RootState } from 'stores';
-import { useState } from 'react';
+import { StyledFormButtons, StyledButton } from './styles';
 
 export const FormButtons = ({
 	currentStep,

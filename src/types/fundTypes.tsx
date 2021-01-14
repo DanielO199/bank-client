@@ -6,9 +6,9 @@ export const GET_SAVINGS_SUCCESS = 'GET_SAVINGS_SUCCESS';
 export const GET_SAVINGS_ERROR = 'GET_SAVINGS_ERROR';
 
 export interface IFundStore {
-	imWithError?: boolean;
-	errorMsg?: string;
 	imBusy: boolean;
 	funds: number;
 	savings: number;
+	savingsData: [];
+	fundsData: [];
 }

@@ -1,25 +1,12 @@
-// import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { PlusCircleOutlined } from '@ant-design/icons';
-// import { Select } from 'antd';
+import { useSelector } from 'react-redux';
 
-import { Card, CardItem } from 'common/components';
-
-// import { fetchAllBillsAction } from 'actions/billActions';
-// import { inputChange } from 'actions/paymentActions';
-
-// import { OverviewWrapper, OverviewDetails } from './styles';
 import { RootState } from 'stores';
-
-const OverviewHeader = () => {
-	return <p>Transaction overview</p>;
-};
+import { Card, CardItem } from 'common/components';
 
 export const Overview = () => {
 	const { receiver, bill, money, title } = useSelector(
 		(state: RootState) => state.step
 	);
-	// const dispatch = useDispatch();
 
 	return (
 		<Card style={{ textAlign: 'center' }} title="Transaction overview">

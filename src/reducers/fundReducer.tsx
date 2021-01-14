@@ -1,4 +1,4 @@
-import { fundStore } from 'stores/fundStore';
+import { initialFundStore } from 'stores/fundStore';
 
 import {
 	GET_FUNDS_REQUEST,
@@ -9,7 +9,7 @@ import {
 	GET_SAVINGS_ERROR
 } from 'types/fundTypes';
 
-const fundReducer = (state = fundStore, action) => {
+const fundReducer = (state = initialFundStore, action) => {
 	switch (action.type) {
 		case GET_FUNDS_REQUEST:
 			return {

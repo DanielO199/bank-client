@@ -1,17 +1,16 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import debounce from 'lodash/debounce';
 import { Form } from 'antd';
+import debounce from 'lodash/debounce';
 
+import { inputChange } from 'actions/stepActions';
+import { RootState } from 'stores';
 import { StyledSelect } from 'common/components';
 import { StepName } from 'containers/Payment/styles';
 import { fetchAllBillsAction } from 'actions/billActions';
-import { inputChange } from 'actions/stepActions';
-import { RootState } from 'stores';
 
 export const Receiver = () => {
 	const { allBills } = useSelector((state: RootState) => state.bill);
-
 	const { receiver } = useSelector((state: RootState) => state.step);
 	const dispatch = useDispatch();
 
@@ -32,6 +31,7 @@ export const Receiver = () => {
 			{item.accountNumber}
 		</StyledSelect.Option>
 	));
+
 	return (
 		<div>
 			<StepName>Receiver</StepName>

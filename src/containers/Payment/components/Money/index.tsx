@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Input, Form } from 'antd';
 
-import { Wrapper } from './styles';
-
+import { RootState } from 'stores';
 import { StepName } from 'containers/Payment/styles';
 import { inputChange } from 'actions/stepActions';
-import { RootState } from 'stores';
+
+import { Wrapper } from './styles';
 
 export const Money = () => {
 	const { money } = useSelector((state: RootState) => state.step);

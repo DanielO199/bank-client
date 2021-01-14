@@ -1,8 +1,8 @@
 import { NEXT_STEP, PREVIOUS_STEP, INPUT_CHANGE } from 'types/stepTypes';
 
-import { stepStore } from 'stores/stepStore';
+import { initialStepStore } from 'stores/stepStore';
 
-const stepReducer = (state = stepStore, action) => {
+const stepReducer = (state = initialStepStore, action) => {
 	switch (action.type) {
 		case NEXT_STEP:
 			return {
@@ -23,7 +23,7 @@ const stepReducer = (state = stepStore, action) => {
 			};
 
 		case 'RESET':
-			return stepStore;
+			return initialStepStore;
 
 		default:
 			return { ...state };

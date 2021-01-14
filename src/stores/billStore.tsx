@@ -1,6 +1,6 @@
 import { IBillStore } from 'types/billTypes';
 
-export const initialState = {
+export const initialBillState: IBillStore = {
 	imBusy: false,
 	imBusyAction: false,
 	imWithError: false,

@@ -1,11 +1,10 @@
 import {
+	IS_LOGGED,
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,
 	REGISTER_REQUEST,
 	REGISTER_SUCCESS
 } from 'types/authTypes';
-
-import { billApi } from 'api/billApi';
 
 export const loginAction = (data) => async (dispatch) => {
 	try {
@@ -26,17 +25,28 @@ export const loginAction = (data) => async (dispatch) => {
 	} catch (error) {}
 };
 
-export const isLoggedAction = () => {
-	return {
-		type: 'IS_LOGGED'
-	};
+export const registerAction = (data) => async (dispatch) => {
+	try {
+		dispatch({ type: REGISTER_REQUEST });
+
+		const rawResponse = await fetch(
+			'http://localhost:5000/api/users/register',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			}
+		);
+		const content = await rawResponse.json();
+
+		dispatch({ type: REGISTER_SUCCESS, payload: content });
+	} catch (error) {}
 };
 
-export const registerAction = () => async (dispatch) => {
-	console.log('1');
-	try {
-		// dispatch({ type: REGISTER_REQUEST });
-		// const responseData = await billApi.getUserBills();
-		// dispatch({ type: REGISTER_SUCCESS, payload: responseData.bills });
-	} catch (error) {}
+export const isLoggedAction = () => {
+	return {
+		type: IS_LOGGED
+	};
 };

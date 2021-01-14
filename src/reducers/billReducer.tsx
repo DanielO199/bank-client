@@ -9,10 +9,10 @@ import {
 	GET_ALL_BILLS_ERROR
 } from 'types/billTypes';
 
-import { BillActionTypes } from 'types/billTypes';
-import { initialState } from 'stores/billStore';
+import { IAction } from 'common/interfaces';
+import { initialBillState } from 'stores/billStore';
 
-const billReducer = (state = initialState, action: BillActionTypes) => {
+const billReducer = (state = initialBillState, action: IAction) => {
 	switch (action.type) {
 		case CREATE_NEW_BILL_REQUEST:
 			return {

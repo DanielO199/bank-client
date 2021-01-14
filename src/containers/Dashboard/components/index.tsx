@@ -1,6 +1,6 @@
+export { AvailableFunds } from './AvailableFunds';
 export { Bills } from './Bills';
 export { CreateBillModal } from './CreateBillModal';
-export { AvailableFunds } from './AvailableFunds';
-export { Savings } from './Savings';
 export { RecentTransactions } from './RecentTransactions';
+export { Savings } from './Savings';
 export { Tip } from './Tip';

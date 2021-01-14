@@ -1,10 +1,7 @@
-export const transactionStore = {
+export const initialTransactionStore = {
 	imBusy: false,
-	imWithError: false,
-	errorMsg: '',
 	transactions: [],
 	isReceived: false,
-	transactionCreated: false,
 	pagination: {
 		current: 1,
 		pageSize: 1,

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from 'antd';
 
-import { StepName } from 'containers/Payment/styles';
 import { inputChange } from 'actions/stepActions';
 import { RootState } from 'stores';
+import { StepName } from 'containers/Payment/styles';
 
 export const Title = () => {
 	const { title } = useSelector((state: RootState) => state.step);

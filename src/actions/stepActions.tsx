@@ -1,4 +1,4 @@
-import { NEXT_STEP, PREVIOUS_STEP } from 'types/stepTypes';
+import { NEXT_STEP, PREVIOUS_STEP, INPUT_CHANGE } from 'types/stepTypes';
 
 export const nextStep = () => {
 	return {
@@ -14,7 +14,7 @@ export const prevStep = () => {
 
 export const inputChange = (input, value) => {
 	return {
-		type: 'INPUT_CHANGE',
+		type: INPUT_CHANGE,
 		input,
 		value
 	};

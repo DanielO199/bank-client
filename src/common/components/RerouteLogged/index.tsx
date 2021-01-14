@@ -1,7 +1,5 @@
 import { Redirect } from 'react-router-dom';
 
-import { authStore } from 'stores/authStore';
-
 import { IsLogged } from 'utils';
 
 export default function RerouteLogged(Children) {

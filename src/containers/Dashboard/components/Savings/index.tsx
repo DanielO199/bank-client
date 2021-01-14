@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PieChart, Pie, Cell } from 'recharts';
 
+import { RootState } from 'stores';
 import { fetchSavingsAction } from 'actions/fundActions';
 import { Spinner } from 'common/components';
-import { RootState } from 'stores';
-import { Wrapper } from './styles';
 import { primaryColor } from 'common/globals/theme';
+import { Wrapper } from './styles';
 
 export const Savings = () => {
 	const { savings, savingsData, imBusy } = useSelector(
