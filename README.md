@@ -1,5 +1,3 @@
-
-
 <h2>
 Bank Application
 </h2>
