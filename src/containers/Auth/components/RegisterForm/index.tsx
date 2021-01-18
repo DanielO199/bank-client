@@ -1,12 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 
+import { RootState } from 'stores';
 import { Logo } from 'common/components';
+import { registerAction } from 'actions/authActions';
 import { FormWrapper, StyledButton, StyledForm } from 'containers/Auth/styles';
 
 export const RegisterForm = ({ toggleMode }) => {
+	const { pinCode } = useSelector((state: RootState) => state.auth);
+	const dispatch = useDispatch();
+
 	const onFinish = (values) => {
-		console.log(values);
+		dispatch(registerAction(values));
 	};
 
 	return (
@@ -29,7 +35,7 @@ export const RegisterForm = ({ toggleMode }) => {
 				</Form.Item>
 
 				<Form.Item
-					name="lastnName"
+					name="lastName"
 					rules={[
 						{
 							required: true,
@@ -85,6 +91,8 @@ export const RegisterForm = ({ toggleMode }) => {
 					</StyledButton>
 				</Form.Item>
 			</StyledForm>
+
+			{pinCode && `Your Pin Code is : ${pinCode}`}
 		</FormWrapper>
 	);
 };

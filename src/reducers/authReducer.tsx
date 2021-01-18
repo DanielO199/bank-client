@@ -24,7 +24,7 @@ const authReducer = (state = initialAuthStore, action) => {
 		case LOGIN_SUCCESS:
 			return {
 				...state,
-				imBusyAction: false,
+				imBusy: false,
 				isLogged: true,
 				userId: action.payload.userId,
 				accessToken: action.payload.token
@@ -40,7 +40,7 @@ const authReducer = (state = initialAuthStore, action) => {
 			return {
 				...state,
 				imBusy: false,
-				userBills: action.payload
+				pinCode: action.payload.pinCode
 			};
 
 		default:

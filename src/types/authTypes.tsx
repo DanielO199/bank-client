@@ -7,6 +7,7 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export interface IAuthStore {
 	imBusy: boolean;
 	isLogged: boolean;
+	pinCode: number;
 	userId: string;
 	accessToken: string;
 }
